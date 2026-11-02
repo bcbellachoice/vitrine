@@ -3,318 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BC Bella Choice | Curadoria de moda, beleza e cuidados</title>
-<meta name="description" content="BC Bella Choice: vitrine de curadoria feminina com roupas, maquiagem e cuidados bem avaliados, preço justo e atendimento de perto.">
+<title>Bella Choice | Moda, beleza e cuidados</title>
+<meta name="description" content="Bella Choice: seleção de moda, maquiagem e cuidados bem avaliados. Toque no produto para ver a oferta.">
 <meta name="theme-color" content="#f6f1e7">
-<meta property="og:title" content="BC Bella Choice">
-<meta property="og:description" content="Curadoria de moda, beleza e cuidados com preço justo.">
-<meta property="og:type" content="website">
+<meta property="og:title" content="Bella Choice">
+<meta property="og:description" content="Seleção de moda, maquiagem e cuidados bem avaliados.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%235a6b50'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23f6f1e7' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap">
-<style>
-/* BC Bella Choice - estilo base
-   Leve de proposito: sem frameworks, sem imagens pesadas, animacoes curtas
-   e desligadas para quem prefere menos movimento. */
 
-/* ---------- Paletas ---------- */
-:root,
-[data-tema="sage"] {
-  --fundo: #f6f1e7;        /* creme */
-  --fundo-alt: #ede6d8;
-  --superficie: #fffdf8;
-  --texto: #2f332c;
-  --texto-suave: #5f6559;
-  --marca: #7d8f72;        /* verde sage */
-  --marca-forte: #5a6b50;
-  --marca-clara: #dfe5d6;
-  --detalhe: #b89b6a;      /* dourado discreto */
-  --borda: #ddd4c3;
-  --esgotado: #8a8578;
-}
-[data-tema="vinho"] {
-  --fundo: #faf7f2;        /* off-white */
-  --fundo-alt: #f1ebe3;
-  --superficie: #ffffff;
-  --texto: #2e2124;
-  --texto-suave: #6b5a5e;
-  --marca: #7b2d3b;        /* vinho */
-  --marca-forte: #5c1f2b;
-  --marca-clara: #f0dfe1;
-  --detalhe: #b08d57;
-  --borda: #e5dad2;
-  --esgotado: #8d8285;
-}
-[data-tema="crepusculo"] {
-  --fundo: #f8f2ec;        /* areia clara */
-  --fundo-alt: #efe4da;
-  --superficie: #fffaf6;
-  --texto: #33282a;
-  --texto-suave: #6e5f60;
-  --marca: #a0605e;        /* rose queimado, tom de fim de tarde */
-  --marca-forte: #7c4544;
-  --marca-clara: #f1dcd6;
-  --detalhe: #8b7aa8;      /* lilas suave */
-  --borda: #e6d8cc;
-  --esgotado: #8f8582;
-}
-
-/* ---------- Base ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--fundo);
-  color: var(--texto);
-  font-family: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-h1, h2, h3, .serif {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: .005em;
-  margin: 0;
-}
-p { margin: 0 0 1em; }
-.icone { width: 1.25em; height: 1.25em; flex: none; stroke: currentColor; fill: none;
-  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.sobrelinha {
-  display: inline-block; font-size: .75rem; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--marca-forte); margin-bottom: 14px;
-}
-:focus-visible { outline: 2px solid var(--marca); outline-offset: 3px; }
-
-/* ---------- Faixa superior ---------- */
-.faixa {
-  background: var(--marca-forte); color: var(--superficie);
-  font-size: .8rem; letter-spacing: .04em; text-align: center; padding: 8px 16px;
-}
-
-/* ---------- Cabecalho ---------- */
-.topo {
-  position: sticky; top: 0; z-index: 20;
-  background: color-mix(in srgb, var(--fundo) 92%, transparent);
-  border-bottom: 1px solid var(--borda);
-}
-@supports not (background: color-mix(in srgb, red 50%, transparent)) { .topo { background: var(--fundo); } }
-.topo .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
-.logo b { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 1.6rem; letter-spacing: .02em; }
-.logo small { font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--texto-suave); margin-top: 4px; }
-.menu { display: flex; gap: 26px; font-size: .9rem; }
-.menu a { text-decoration: none; color: var(--texto-suave); }
-.menu a:hover { color: var(--texto); }
-.topo-insta { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: .9rem; color: var(--marca-forte); }
-@media (max-width: 760px) { .menu { display: none; } }
-
-/* ---------- Abertura ---------- */
-.abertura { padding: 72px 0 56px; position: relative; overflow: hidden; }
-.abertura .container { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
-.abertura h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
-.abertura h1 em { font-style: italic; color: var(--marca-forte); }
-.abertura p.lead { font-size: 1.08rem; color: var(--texto-suave); max-width: 46ch; margin: 22px 0 30px; }
-.arte-abertura { justify-self: center; width: 100%; max-width: 360px; color: var(--marca); }
-.arte-abertura svg { width: 100%; height: auto; }
-@media (max-width: 760px) {
-  .abertura { padding: 48px 0 32px; }
-  .abertura .container { grid-template-columns: 1fr; }
-  .arte-abertura { max-width: 220px; order: -1; }
-}
-
-.botao {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 48px; padding: 0 26px; border-radius: 999px; border: 1px solid var(--marca-forte);
-  background: var(--marca-forte); color: var(--superficie); text-decoration: none;
-  font: inherit; font-size: .95rem; letter-spacing: .02em; cursor: pointer;
-  transition: background-color .2s, color .2s;
-}
-.botao:hover { background: var(--texto); border-color: var(--texto); }
-.botao.vazado { background: transparent; color: var(--marca-forte); }
-.botao.vazado:hover { background: var(--marca-forte); color: var(--superficie); }
-.botao[aria-disabled="true"] { background: transparent; border-color: var(--borda); color: var(--esgotado); cursor: not-allowed; }
-
-/* ---------- Diferenciais ---------- */
-.diferenciais { border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); background: var(--superficie); }
-.diferenciais ul { list-style: none; margin: 0; padding: 22px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.diferenciais li { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: var(--texto-suave); }
-.diferenciais .icone { width: 26px; height: 26px; color: var(--marca); }
-.diferenciais strong { display: block; color: var(--texto); font-weight: 500; }
-@media (max-width: 860px) { .diferenciais ul { grid-template-columns: repeat(2, 1fr); } }
-
-/* ---------- Secoes ---------- */
-.secao { padding: 72px 0; }
-.secao.alt { background: var(--fundo-alt); }
-.cabeca-secao { text-align: center; max-width: 620px; margin: 0 auto 36px; }
-.cabeca-secao h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
-.cabeca-secao p { color: var(--texto-suave); margin-top: 12px; }
-@media (max-width: 760px) { .secao { padding: 52px 0; } }
-
-/* ---------- Filtros ---------- */
-.filtros { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-.filtro {
-  font: inherit; font-size: .88rem; padding: 8px 18px; border-radius: 999px; cursor: pointer;
-  border: 1px solid var(--borda); background: transparent; color: var(--texto-suave);
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.filtro .icone { width: 16px; height: 16px; }
-.filtro[aria-pressed="true"] { background: var(--texto); border-color: var(--texto); color: var(--superficie); }
-
-/* ---------- Cards ---------- */
-.grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-@media (max-width: 900px) { .grade { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
-@media (max-width: 420px) { .grade { gap: 12px; } }
-.card {
-  background: var(--superficie); border: 1px solid var(--borda); border-radius: 4px;
-  display: flex; flex-direction: column; overflow: hidden;
-  content-visibility: auto; contain-intrinsic-size: 420px;
-}
-.card-midia { position: relative; aspect-ratio: 4 / 5; background: var(--marca-clara); overflow: hidden; }
-.card-midia img { width: 100%; height: 100%; object-fit: cover; }
-.card-arte { width: 100%; height: 100%; display: grid; place-items: center; color: var(--marca); }
-.card-arte svg { width: 38%; height: auto; stroke-width: 1; }
-.selo {
-  position: absolute; top: 12px; left: 12px; background: var(--superficie); color: var(--texto);
-  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 2px;
-}
-.card.esgotado .card-midia > :not(.selo) { filter: grayscale(1); opacity: .55; }
-.card.esgotado .selo { background: var(--texto); color: var(--superficie); }
-.card-corpo { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
-.card-cat { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--texto-suave); }
-.card h3 { font-size: 1.35rem; margin: 6px 0 6px; }
-.card-desc { font-size: .88rem; color: var(--texto-suave); margin-bottom: 14px; }
-.preco { margin-top: auto; margin-bottom: 14px; }
-.preco s { color: var(--texto-suave); font-size: .85rem; margin-right: 8px; }
-.preco b { font-size: 1.25rem; font-weight: 500; }
-.preco small { display: block; color: var(--texto-suave); font-size: .8rem; }
-.card .botao { width: 100%; min-height: 44px; font-size: .88rem; }
-@media (max-width: 520px) {
-  .card-corpo { padding: 12px 12px 14px; }
-  .card h3 { font-size: 1.1rem; }
-  .card-desc { display: none; }
-  .preco b { font-size: 1.05rem; }
-  .card .botao { padding: 0 10px; font-size: .8rem; }
-}
-.vazio { text-align: center; color: var(--texto-suave); padding: 40px 0; grid-column: 1 / -1; }
-
-/* ---------- Como funciona ---------- */
-.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: passo; }
-.passo { padding: 28px; background: var(--superficie); border: 1px solid var(--borda); border-radius: 4px; }
-.passo .icone { width: 30px; height: 30px; color: var(--marca); margin-bottom: 16px; }
-.passo h3 { font-size: 1.35rem; margin-bottom: 8px; }
-.passo p { font-size: .93rem; color: var(--texto-suave); margin: 0; }
-@media (max-width: 860px) { .passos { grid-template-columns: 1fr; } }
-.aviso-intermediacao {
-  margin-top: 32px; padding: 20px 24px; border-left: 3px solid var(--detalhe);
-  background: var(--superficie); font-size: .92rem; color: var(--texto-suave);
-  display: flex; gap: 14px; align-items: flex-start;
-}
-.aviso-intermediacao .icone { color: var(--detalhe); width: 22px; height: 22px; margin-top: 2px; }
-.aviso-intermediacao p { margin: 0; }
-.aviso-intermediacao strong { color: var(--texto); font-weight: 500; }
-
-/* ---------- FAQ ---------- */
-.faq { max-width: 760px; margin: 0 auto; }
-.faq details { border-bottom: 1px solid var(--borda); }
-.faq summary {
-  list-style: none; cursor: pointer; padding: 22px 4px; display: flex; justify-content: space-between;
-  align-items: center; gap: 16px; font-size: 1.05rem;
-}
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary .icone { color: var(--marca); transition: transform .2s; }
-.faq details[open] summary .icone { transform: rotate(45deg); }
-.faq .resposta { padding: 0 4px 22px; color: var(--texto-suave); font-size: .95rem; }
-
-/* ---------- Chamada Instagram ---------- */
-.chamada { text-align: center; }
-.chamada h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 12px; }
-.chamada p { color: var(--texto-suave); margin-bottom: 26px; }
-
-/* ---------- Rodape ---------- */
-.rodape { background: var(--texto); color: color-mix(in srgb, var(--superficie) 78%, transparent); font-size: .86rem; padding: 52px 0 28px; }
-@supports not (color: color-mix(in srgb, red 50%, transparent)) { .rodape { color: #d9d4cc; } }
-.rodape a { text-decoration: none; }
-.rodape a:hover { text-decoration: underline; }
-.rodape-grade { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
-.rodape .logo b { color: var(--superficie); }
-.rodape .logo small { color: inherit; }
-.rodape h4 { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--superficie); margin: 0 0 14px; font-weight: 500; }
-.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.rodape li a { display: inline-flex; align-items: center; gap: 8px; }
-.avisos-legais { border-top: 1px solid rgba(255,255,255,.14); padding-top: 22px; font-size: .78rem; line-height: 1.7; }
-.avisos-legais p { margin: 0 0 10px; }
-@media (max-width: 760px) { .rodape-grade { grid-template-columns: 1fr; gap: 24px; } }
-
-/* ---------- Paginas legais ---------- */
-.legal { padding: 56px 0 72px; }
-.legal .container { max-width: 780px; }
-.legal h1 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 8px; }
-.legal .atualizado { color: var(--texto-suave); font-size: .88rem; margin-bottom: 28px; }
-.legal nav.indice { background: var(--superficie); border: 1px solid var(--borda); padding: 18px 22px; margin-bottom: 40px; font-size: .92rem; }
-.legal nav.indice ol { margin: 8px 0 0; padding-left: 20px; }
-.legal h2 { font-size: 1.9rem; margin: 48px 0 14px; padding-top: 12px; border-top: 1px solid var(--borda); }
-.legal h3 { font-size: 1.3rem; margin: 26px 0 8px; }
-.legal p, .legal li { color: var(--texto-suave); font-size: .97rem; }
-.legal li { margin-bottom: 6px; }
-.legal strong { color: var(--texto); font-weight: 500; }
-.destaque-legal { background: var(--marca-clara); padding: 18px 22px; border-radius: 4px; margin: 18px 0; }
-.destaque-legal p { color: var(--texto); margin: 0; }
-
-/* ---------- Seletor de paletas (apenas com ?paletas na URL) ---------- */
-.paletas {
-  position: fixed; right: 16px; bottom: 16px; z-index: 50; background: var(--superficie);
-  border: 1px solid var(--borda); border-radius: 999px; padding: 6px; display: flex; gap: 6px;
-  box-shadow: 0 6px 24px rgba(0,0,0,.08);
-}
-.paletas button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--superficie); cursor: pointer; padding: 0; }
-.paletas button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--texto); }
-
-/* ---------- Movimento ---------- */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; animation: none !important; }
-}
-</style>
 <script>
 /* ==========================================================
-   BC Bella Choice - CONFIGURACAO GERAL
-   Este e o unico arquivo que voce precisa mexer para:
-   - colocar o ID do pixel da Meta
-   - trocar a paleta de cores
-   - ligar a planilha Google como fonte dos produtos
+   BELLA CHOICE - CONFIGURACAO GERAL
+   (o mesmo bloco existe em aviso-e-privacidade.html;
+    ao mudar algo aqui, mude la tambem)
    ========================================================== */
 window.BELLA_CONFIG = {
-
-  /* ID do pixel da Meta (Business Manager > Gerenciador de Eventos).
-     Enquanto estiver vazio, nenhum dado e enviado e os eventos
-     aparecem apenas no console do navegador. */
+  /* ID do pixel da Meta. Vazio = nada e enviado. */
   pixelId: "",
 
-  /* Paleta do site: "sage" (verde sage + creme, padrao),
-     "vinho" (vinho + off-white) ou "crepusculo" (rose queimado + areia). */
+  /* Paleta: "sage" (padrao), "vinho" ou "crepusculo" */
   tema: "sage",
 
-  /* Planilha Google publicada como CSV (opcional, recomendado).
-     Arquivo > Compartilhar > Publicar na web > aba "produtos" > CSV.
-     Cole o link aqui. Se ficar vazio, o site usa o arquivo produtos.js. */
+  /* Link da Google Planilha publicada como CSV (controle de estoque).
+     Vazio = usa a LISTA DE PRODUTOS no final deste arquivo. */
   planilhaCsv: "",
 
-  /* Contatos que aparecem no rodape e nas paginas legais */
-  instagram: "https://instagram.com/bcbellachoice",
-  instagramUsuario: "@bcbellachoice",
-  email: "contato@bcbellachoice.com.br",
-  whatsapp: "" /* ex.: "5511999999999" (somente numeros) */
+  instagram: "https://instagram.com/bellachoice",
+  instagramUsuario: "@bellachoice"
 };
 </script>
 
-<!-- Meta Pixel - o ID fica em assets/config.js (pixelId). Sem ID, nada e enviado. -->
+<!-- Meta Pixel - o ID fica em BELLA_CONFIG.pixelId -->
 <script>
 (function () {
   var id = (window.BELLA_CONFIG || {}).pixelId;
@@ -328,540 +49,326 @@ window.BELLA_CONFIG = {
 })();
 </script>
 <!-- Fim Meta Pixel -->
+
+<style>
+/* ---------- Paletas ---------- */
+:root, [data-tema="sage"] {
+  --fundo:#f6f1e7; --superficie:#fffdf8; --texto:#2f332c; --suave:#5f6559;
+  --marca:#7d8f72; --marca-forte:#5a6b50; --marca-clara:#e3e8da; --detalhe:#b89b6a; --borda:#ddd4c3;
+}
+[data-tema="vinho"] {
+  --fundo:#faf7f2; --superficie:#ffffff; --texto:#2e2124; --suave:#6b5a5e;
+  --marca:#7b2d3b; --marca-forte:#5c1f2b; --marca-clara:#f2e3e5; --detalhe:#b08d57; --borda:#e5dad2;
+}
+[data-tema="crepusculo"] {
+  --fundo:#f8f2ec; --superficie:#fffaf6; --texto:#33282a; --suave:#6e5f60;
+  --marca:#a0605e; --marca-forte:#7c4544; --marca-clara:#f2e0da; --detalhe:#8b7aa8; --borda:#e6d8cc;
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  margin:0; background:var(--fundo); color:var(--texto);
+  font-family:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; }
+img { display:block; max-width:100%; }
+.serif, h1, h2 { font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif; font-weight:500; line-height:1.15; margin:0; }
+.icone { width:20px; height:20px; flex:none; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+:focus-visible { outline:2px solid var(--marca); outline-offset:3px; }
+
+.pagina { max-width:520px; margin:0 auto; padding:44px 20px 28px; }
+
+/* ---------- Perfil ---------- */
+.perfil { text-align:center; margin-bottom:30px; }
+.monograma {
+  width:92px; height:92px; margin:0 auto 18px; border-radius:50%;
+  background:var(--marca-forte); color:var(--fundo);
+  display:grid; place-items:center; position:relative;
+}
+.monograma::after { content:""; position:absolute; inset:-6px; border:1px solid var(--detalhe); border-radius:50%; opacity:.7; }
+.monograma span { font-family:"Cormorant Garamond",Georgia,serif; font-size:2.6rem; font-style:italic; line-height:1; margin-top:-4px; }
+.perfil h1 { font-size:2.3rem; font-weight:600; letter-spacing:.01em; }
+.perfil .linha { font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--suave); margin:6px 0 14px; }
+.perfil p { color:var(--suave); font-size:.95rem; max-width:34ch; margin:0 auto 16px; }
+.social { display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-size:.9rem; color:var(--marca-forte);
+  border:1px solid var(--borda); padding:7px 16px; border-radius:999px; background:var(--superficie); }
+
+/* ---------- Titulo de grupo ---------- */
+.grupo { display:flex; align-items:center; gap:14px; margin:30px 0 14px; font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; color:var(--suave); }
+.grupo::before, .grupo::after { content:""; flex:1; height:1px; background:var(--borda); }
+
+/* ---------- Links de produto ---------- */
+.links { display:grid; gap:12px; }
+.link {
+  display:flex; align-items:center; gap:14px; padding:10px 14px 10px 10px;
+  background:var(--superficie); border:1px solid var(--borda); border-radius:14px;
+  text-decoration:none; transition:border-color .2s, transform .2s;
+  content-visibility:auto; contain-intrinsic-size:88px;
+}
+.link:hover { border-color:var(--marca); }
+.link:active { transform:scale(.99); }
+.miniatura { width:66px; height:66px; flex:none; border-radius:10px; overflow:hidden; background:var(--marca-clara); display:grid; place-items:center; color:var(--marca); }
+.miniatura img { width:100%; height:100%; object-fit:cover; }
+.miniatura .icone { width:30px; height:30px; stroke-width:1.2; }
+.info { flex:1; min-width:0; }
+.info strong { display:block; font-weight:500; font-size:1rem; line-height:1.3; }
+.info small { display:block; color:var(--suave); font-size:.8rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.valor { margin-top:3px; font-size:.95rem; }
+.valor s { color:var(--suave); font-size:.8rem; margin-right:6px; }
+.selo { display:inline-block; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:2px 7px; border-radius:3px; background:var(--marca-clara); color:var(--marca-forte); margin-bottom:4px; }
+.seta { color:var(--marca); }
+.link.esgotado { background:transparent; }
+.link.esgotado .miniatura, .link.esgotado .info strong, .link.esgotado .valor { opacity:.5; }
+.link.esgotado .miniatura { filter:grayscale(1); }
+.link.esgotado .selo { background:var(--texto); color:var(--fundo); }
+.carregando { text-align:center; color:var(--suave); padding:20px 0; font-size:.9rem; }
+
+/* ---------- Faixa de garantias ---------- */
+.notas { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:26px; }
+.nota { text-align:center; font-size:.74rem; color:var(--suave); line-height:1.35; padding:12px 6px; border:1px solid var(--borda); border-radius:12px; }
+.nota .icone { display:block; margin:0 auto 6px; color:var(--marca); width:22px; height:22px; }
+
+/* ---------- FAQ ---------- */
+.faq details { border-bottom:1px solid var(--borda); }
+.faq summary { list-style:none; cursor:pointer; padding:16px 2px; display:flex; justify-content:space-between; align-items:center; gap:14px; font-size:.97rem; }
+.faq summary::-webkit-details-marker { display:none; }
+.faq summary .icone { color:var(--marca); width:18px; height:18px; transition:transform .2s; }
+.faq details[open] summary .icone { transform:rotate(45deg); }
+.faq p { margin:0 0 16px; padding:0 2px; color:var(--suave); font-size:.9rem; }
+
+/* ---------- Rodape ---------- */
+.rodape { margin-top:34px; padding-top:22px; border-top:1px solid var(--borda); font-size:.74rem; color:var(--suave); line-height:1.65; text-align:center; }
+.rodape p { margin:0 0 10px; }
+.rodape nav { display:flex; justify-content:center; gap:18px; margin-bottom:14px; font-size:.8rem; }
+.rodape nav a { color:var(--texto); }
+
+/* ---------- Seletor de paletas (?paletas na URL) ---------- */
+.paletas { position:fixed; right:14px; bottom:14px; z-index:9; background:var(--superficie); border:1px solid var(--borda); border-radius:999px; padding:6px; display:flex; gap:6px; box-shadow:0 6px 20px rgba(0,0,0,.08); }
+.paletas button { width:28px; height:28px; border-radius:50%; border:2px solid var(--superficie); cursor:pointer; padding:0; }
+.paletas button[aria-pressed="true"] { box-shadow:0 0 0 2px var(--texto); }
+
+@media (max-width:360px) { .notas { grid-template-columns:1fr; } .miniatura { width:56px; height:56px; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; } }
+</style>
 </head>
 <body>
 
-<!-- Icones (desenhados em SVG, sem emojis) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-curadoria" viewBox="0 0 24 24"><path d="M12 3.5 14.4 8.4l5.4.8-3.9 3.8.9 5.4L12 15.9l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 3.5Z"/></symbol>
-    <symbol id="i-preco" viewBox="0 0 24 24"><path d="M3.5 12.6V4.5a1 1 0 0 1 1-1h8.1a1 1 0 0 1 .7.3l7.2 7.2a1 1 0 0 1 0 1.4l-8.1 8.1a1 1 0 0 1-1.4 0l-7.2-7.2a1 1 0 0 1-.3-.7Z"/><circle cx="8.5" cy="8.5" r="1.5"/></symbol>
-    <symbol id="i-seguro" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 3 8.2 7 9.5 4-1.3 7-5.2 7-9.5V6l-7-3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
-    <symbol id="i-conversa" viewBox="0 0 24 24"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.6A7.5 7.5 0 1 1 20 12Z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></symbol>
-    <symbol id="i-vitrine" viewBox="0 0 24 24"><path d="M4 9.5 5.5 4h13L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 12v8h13v-8"/><path d="M10 20v-4.5h4V20"/></symbol>
-    <symbol id="i-cartao" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></symbol>
-    <symbol id="i-caixa" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5v-9Z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
-    <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></symbol>
-    <symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
-    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-curadoria" viewBox="0 0 24 24"><path d="M12 3.5 14.4 8.4l5.4.8-3.9 3.8.9 5.4L12 15.9l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 3.5Z"/></symbol>
+    <symbol id="i-seguro" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 3 8.2 7 9.5 4-1.3 7-5.2 7-9.5V6l-7-3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+    <symbol id="i-caixa" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5v-9Z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></symbol>
+    <symbol id="i-roupas" viewBox="0 0 24 24"><path d="M10 4.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V9"/><path d="M12 9 3.4 15.2c-.8.6-.4 1.8.6 1.8h16c1 0 1.4-1.2.6-1.8L12 9Z"/></symbol>
+    <symbol id="i-maquiagem" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9Z"/><path d="M10 11V7.5L14 4v7"/><path d="M9 15h6"/></symbol>
+    <symbol id="i-cuidados" viewBox="0 0 24 24"><path d="M10 3h4v3h-4z"/><path d="M9 6h6l1 3v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-3Z"/><path d="M8 13h8"/></symbol>
+    <symbol id="i-acessorios" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>
   </defs>
 </svg>
 
-<div class="faixa">Curadoria de produtos bem avaliados, com preço justo e atendimento pelo Instagram</div>
-
-<header class="topo">
-  <div class="container">
-    <a class="logo" href="index.html" aria-label="BC Bella Choice, página inicial">
-      <b>BC Bella Choice</b><small>curadoria feminina</small>
+<main class="pagina">
+  <header class="perfil">
+    <div class="monograma" aria-hidden="true"><span>B</span></div>
+    <h1>Bella Choice</h1>
+    <div class="linha">moda · beleza · cuidados</div>
+    <p>Separamos produtos bem avaliados por quem já comprou e reunimos tudo aqui. Toque no item para ver a oferta completa.</p>
+    <a class="social" href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram #vitrine">
+      <svg class="icone"><use href="#i-insta"/></svg><span data-insta-usuario>@bellachoice</span>
     </a>
-    <nav class="menu" aria-label="Principal">
-      <a href="#vitrine">Vitrine</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#duvidas">Dúvidas</a>
+  </header>
+
+  <div class="grupo">Nossa seleção</div>
+  <div class="links" id="links" aria-live="polite">
+    <p class="carregando">Carregando a seleção...</p>
+  </div>
+
+  <div class="notas">
+    <div class="nota"><svg class="icone"><use href="#i-curadoria"/></svg>Itens bem avaliados</div>
+    <div class="nota"><svg class="icone"><use href="#i-seguro"/></svg>Checkout em ambiente seguro</div>
+    <div class="nota"><svg class="icone"><use href="#i-caixa"/></svg>Rastreio do pedido</div>
+  </div>
+
+  <div class="grupo">Dúvidas frequentes</div>
+  <section class="faq">
+    <details>
+      <summary>A Bella Choice vende ou fabrica os produtos?<svg class="icone"><use href="#i-mais"/></svg></summary>
+      <p>Não. A Bella Choice apenas divulga. A venda e o pagamento acontecem na plataforma de vendas para onde você é levada ao tocar no produto, e a fabricação e o envio são do fornecedor responsável.</p>
+    </details>
+    <details>
+      <summary>Onde eu pago? É seguro?<svg class="icone"><use href="#i-mais"/></svg></summary>
+      <p>O pagamento é feito no checkout da plataforma de vendas, em ambiente próprio. A Bella Choice não recebe nem guarda seus dados de pagamento. Confira valor, frete e prazo antes de finalizar.</p>
+    </details>
+    <details>
+      <summary>Qual é o prazo e como acompanho a entrega?<svg class="icone"><use href="#i-mais"/></svg></summary>
+      <p>O prazo aparece no checkout antes da compra e varia conforme o produto e o CEP. Depois de confirmado, o pedido pode ser acompanhado pelo site da plataforma onde você comprou.</p>
+    </details>
+    <details>
+      <summary>Preciso trocar, devolver ou tive um problema. Com quem falo?<svg class="icone"><use href="#i-mais"/></svg></summary>
+      <p>Com o suporte da plataforma onde a compra foi feita. Os canais de atendimento aparecem no checkout e na confirmação do pedido. Como a Bella Choice só divulga, não temos acesso aos pedidos e não conseguimos resolver trocas, devoluções ou entregas.</p>
+    </details>
+    <details>
+      <summary>Este perfil tem relação com o Instagram ou o Facebook?<svg class="icone"><use href="#i-mais"/></svg></summary>
+      <p>Não. Usamos o Instagram e anúncios apenas para divulgar. A Meta Platforms, Inc. não tem envolvimento com os produtos, os preços ou as ofertas e não endossa a Bella Choice.</p>
+    </details>
+  </section>
+
+  <footer class="rodape">
+    <nav>
+      <a href="aviso-e-privacidade.html" data-evento="clique aviso e privacidade #vitrine">Aviso e privacidade</a>
+      <a href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram rodape #vitrine">Instagram</a>
     </nav>
-    <a class="topo-insta" href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram topo #vitrine">
-      <svg class="icone"><use href="#i-insta"/></svg><span class="sr">Instagram</span>
-    </a>
-  </div>
-</header>
-
-<main>
-  <section class="abertura">
-    <div class="container">
-      <div>
-        <span class="sobrelinha">Moda, beleza e cuidados</span>
-        <h1>Escolhas bonitas,<br><em>sem complicação.</em></h1>
-        <p class="lead">Selecionamos peças e produtos que já são queridinhos de quem compra nas grandes lojas, conferimos avaliações e trazemos para cá com um preço que faz sentido. Você escolhe com calma e tira suas dúvidas com a gente.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="botao" href="#vitrine" data-evento="clique ver vitrine #vitrine">Ver a vitrine <svg class="icone"><use href="#i-seta"/></svg></a>
-          <a class="botao vazado" href="#como-funciona" data-evento="clique como funciona #vitrine">Como funciona</a>
-        </div>
-      </div>
-      <div class="arte-abertura" aria-hidden="true">
-        <svg viewBox="0 0 300 360" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-          <path d="M40 350V150a110 110 0 0 1 220 0v200" opacity=".55"/>
-          <path d="M58 350V152a92 92 0 0 1 184 0v198" opacity=".3"/>
-          <path d="M150 330c0-60 4-120 22-190"/>
-          <path d="M152 290c-26-6-46-26-52-52 26 4 46 24 52 52Z"/>
-          <path d="M154 250c26-4 46-22 54-46-26 2-46 20-54 46Z"/>
-          <path d="M158 210c-24-8-40-28-44-52 24 6 40 26 44 52Z"/>
-          <path d="M163 172c22-6 38-24 42-46-22 4-38 22-42 46Z"/>
-          <path d="M168 140c-4-18 2-36 16-48 4 18-2 36-16 48Z"/>
-          <path d="M20 350h260" opacity=".55"/>
-          <circle cx="226" cy="96" r="3" fill="currentColor" stroke="none" opacity=".6"/>
-          <circle cx="84" cy="128" r="2" fill="currentColor" stroke="none" opacity=".5"/>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <section class="diferenciais" aria-label="Por que comprar aqui">
-    <div class="container">
-      <ul>
-        <li><svg class="icone"><use href="#i-curadoria"/></svg><span><strong>Curadoria</strong>Só entra o que é bem avaliado</span></li>
-        <li><svg class="icone"><use href="#i-preco"/></svg><span><strong>Preço justo</strong>Comparado com o mercado</span></li>
-        <li><svg class="icone"><use href="#i-seguro"/></svg><span><strong>Pagamento protegido</strong>Checkout em ambiente seguro</span></li>
-        <li><svg class="icone"><use href="#i-conversa"/></svg><span><strong>Atendimento humano</strong>Fale com a gente no Instagram</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="secao" id="vitrine">
-    <div class="container">
-      <div class="cabeca-secao">
-        <span class="sobrelinha">Vitrine</span>
-        <h2>Escolhidos para você</h2>
-        <p>Atualizamos a seleção com frequência. Quando um item acaba, ele fica marcado aqui e avisamos no Instagram assim que volta.</p>
-      </div>
-      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoria"></div>
-      <div class="grade" id="grade-produtos" aria-live="polite">
-        <p class="vazio">Carregando a vitrine...</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="secao alt" id="como-funciona">
-    <div class="container">
-      <div class="cabeca-secao">
-        <span class="sobrelinha">Como funciona</span>
-        <h2>Simples do começo ao fim</h2>
-      </div>
-      <div class="passos">
-        <div class="passo">
-          <svg class="icone"><use href="#i-vitrine"/></svg>
-          <h3>1. Você escolhe</h3>
-          <p>Navegue pela vitrine, veja detalhes, medidas e avaliações de cada produto antes de decidir.</p>
-        </div>
-        <div class="passo">
-          <svg class="icone"><use href="#i-cartao"/></svg>
-          <h3>2. Finaliza o pedido</h3>
-          <p>O pagamento é feito em um checkout seguro de plataforma parceira. Nenhum dado de cartão fica com a BC Bella Choice.</p>
-        </div>
-        <div class="passo">
-          <svg class="icone"><use href="#i-caixa"/></svg>
-          <h3>3. Recebe em casa</h3>
-          <p>O envio é feito pelo fornecedor responsável pelo produto, com prazo informado no checkout e código de rastreio.</p>
-        </div>
-      </div>
-      <div class="aviso-intermediacao">
-        <svg class="icone"><use href="#i-info"/></svg>
-        <p><strong>Transparência:</strong> a BC Bella Choice é uma vitrine de divulgação e intermediação. Não fabricamos os produtos e não somos a marca responsável por eles. Fabricação, garantia e envio são de responsabilidade do fabricante ou fornecedor indicado em cada oferta. Nosso papel é selecionar, apresentar e te ajudar até a compra.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="secao" id="duvidas">
-    <div class="container">
-      <div class="cabeca-secao">
-        <span class="sobrelinha">Dúvidas frequentes</span>
-        <h2>Antes de comprar</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>A BC Bella Choice fabrica os produtos?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Não. Somos uma vitrine de curadoria: escolhemos produtos bem avaliados, apresentamos aqui e indicamos o caminho até a compra. A fabricação, a garantia e o envio ficam com o fabricante ou fornecedor de cada produto, sempre identificado na oferta.</p></div>
-        </details>
-        <details>
-          <summary>Como faço meu pedido?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Escolha o produto, toque em "Ver detalhes" e siga para o checkout. Lá você confere o valor final, o frete e o prazo antes de pagar.</p></div>
-        </details>
-        <details>
-          <summary>Quais são as formas de pagamento?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>As opções aparecem no checkout de cada produto e costumam incluir Pix, cartão de crédito e boleto. O pagamento é processado por uma plataforma especializada, em ambiente protegido.</p></div>
-        </details>
-        <details>
-          <summary>Qual é o prazo de entrega?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Depende do produto e do seu CEP. O prazo aparece no checkout antes da confirmação, e você recebe o código de rastreio para acompanhar o envio.</p></div>
-        </details>
-        <details>
-          <summary>Posso trocar ou devolver?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Sim. Em compras pela internet você pode desistir em até 7 dias após o recebimento, como prevê o Código de Defesa do Consumidor (art. 49). Trocas por defeito seguem a garantia do fabricante. Se precisar, fale com a gente que ajudamos a encaminhar.</p></div>
-        </details>
-        <details>
-          <summary>O produto que eu quero está esgotado. E agora?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Toque em "Avise-me quando voltar" e siga a BC Bella Choice no Instagram. Avisamos por lá assim que o estoque for reposto.</p></div>
-        </details>
-        <details>
-          <summary>Este site tem relação com o Facebook ou o Instagram?<svg class="icone"><use href="#i-mais"/></svg></summary>
-          <div class="resposta"><p>Não. Usamos o Instagram e anúncios para divulgar a vitrine, mas a Meta Platforms, Inc. (Facebook e Instagram) não tem envolvimento com os produtos, os preços ou as ofertas deste site e não endossa a BC Bella Choice de nenhuma forma.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="secao alt chamada">
-    <div class="container">
-      <span class="sobrelinha">Novidades primeiro</span>
-      <h2>Acompanhe a BC Bella Choice</h2>
-      <p>Lançamentos, reposições e dicas de uso aparecem antes no nosso Instagram.</p>
-      <a class="botao" href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram #vitrine">
-        <svg class="icone"><use href="#i-insta"/></svg><span data-insta-usuario>@bcbellachoice</span>
-      </a>
-    </div>
-  </section>
+    <p>A Bella Choice é apenas uma página de divulgação. Não fabricamos, não vendemos e não entregamos os produtos apresentados. Venda, pagamento, envio, garantia e atendimento são de responsabilidade da plataforma de vendas e do fornecedor de cada produto.</p>
+    <p>Este site não faz parte do Facebook, do Instagram ou da Meta Platforms, Inc. e não é endossado por eles de forma alguma. Facebook e Instagram são marcas registradas da Meta Platforms, Inc.</p>
+    <p>Marcas citadas pertencem aos seus titulares. Imagens ilustrativas. Preços e disponibilidade podem mudar sem aviso.</p>
+    <p>&copy; <span data-ano>2026</span> Bella Choice</p>
+  </footer>
 </main>
-
-<footer class="rodape">
-  <div class="container">
-    <div class="rodape-grade">
-      <div>
-        <a class="logo" href="index.html"><b>BC Bella Choice</b><small>curadoria feminina</small></a>
-        <p style="margin-top:16px;max-width:38ch">Vitrine de curadoria de moda, beleza e cuidados. Selecionamos, apresentamos e ajudamos você até a compra.</p>
-      </div>
-      <div>
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#vitrine">Vitrine</a></li>
-          <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#duvidas">Dúvidas frequentes</a></li>
-          <li><a href="https://bcbellachoice.github.io/termoseprivacidade" data-evento="clique termos #vitrine">Termos e Política de privacidade</a></li>
-         
-        </ul>
-      </div>
-      <div>
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram rodape #vitrine"><svg class="icone"><use href="#i-insta"/></svg><span data-insta-usuario>@bcbellachoice</span></a></li>
-          <li><a href="#" data-email data-evento="clique email #vitrine"><svg class="icone"><use href="#i-email"/></svg><span>E-mail</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="avisos-legais">
-      <p>A BC Bella Choice atua exclusivamente como intermediária na divulgação e venda dos produtos apresentados. Não somos fabricantes nem detentores das marcas exibidas. Fabricação, qualidade, garantia e envio são de responsabilidade dos respectivos fabricantes e fornecedores.</p>
-      <p>Este site não faz parte do Facebook, do Instagram ou da Meta Platforms, Inc. e não é endossado por eles de forma alguma. Facebook e Instagram são marcas registradas da Meta Platforms, Inc.</p>
-      <p>Marcas e nomes de produtos citados pertencem aos seus titulares. Imagens meramente ilustrativas. Preços e disponibilidade podem mudar sem aviso prévio.</p>
-      <p>&copy; <span data-ano>2026</span> BC Bella Choice. [RAZÃO SOCIAL] - CNPJ [00.000.000/0000-00]</p>
-    </div>
-  </div>
-</footer>
 
 <script>
 /* ==========================================================
-   BC Bella Choice - LISTA DE PRODUTOS
-   Para marcar como esgotado: troque status para "esgotado".
-   Para esconder da vitrine:   troque status para "oculto".
-   Para voltar a vender:       troque status para "disponivel".
-
-   Campos:
-   id          identificador unico, sem espacos (ex.: "vestido-midi-linho")
-   nome        nome que aparece no card
-   categoria   roupas | maquiagem | cuidados | acessorios
-   descricao   frase curta (ate ~90 caracteres)
-   preco       preco de venda, so numero (ex.: 129.90)
-   precoDe     preco "de" riscado (opcional, deixe 0 para nao mostrar)
-   parcelas    numero de parcelas sem juros (opcional, 0 para nao mostrar)
-   imagem      caminho ou link da foto (opcional; sem foto aparece uma arte)
-   link        pagina de venda do produto ou link do checkout
-   selo        texto pequeno no canto (opcional: "Novo", "Mais vendido"...)
-   status      disponivel | esgotado | oculto
-
-   ATENCAO: os produtos abaixo sao apenas exemplos de layout.
+   LISTA DE PRODUTOS (usada quando nao ha planilha ligada)
+   status: "disponivel" | "esgotado" | "oculto"
+   categoria (define o desenho quando nao ha foto):
+   roupas | maquiagem | cuidados | acessorios
+   ATENCAO: os itens abaixo sao apenas exemplos de layout.
    ========================================================== */
 window.BELLA_PRODUTOS = [
-  {
-    id: "vestido-midi-linho",
-    nome: "Vestido midi em linho",
-    categoria: "roupas",
-    descricao: "Caimento leve, alcas reguláveis e bolsos laterais.",
-    preco: 149.90,
-    precoDe: 219.90,
-    parcelas: 3,
-    imagem: "",
-    link: "#",
-    selo: "Mais vendido",
-    status: "disponivel"
-  },
-  {
-    id: "paleta-sombras-nude",
-    nome: "Paleta de sombras nude",
-    categoria: "maquiagem",
-    descricao: "12 tons foscos e cintilantes para o dia e a noite.",
-    preco: 69.90,
-    precoDe: 99.90,
-    parcelas: 2,
-    imagem: "",
-    link: "#",
-    selo: "",
-    status: "disponivel"
-  },
-  {
-    id: "serum-vitamina-c",
-    nome: "Sérum facial vitamina C",
-    categoria: "cuidados",
-    descricao: "Textura fluida, absorção rápida, uso diário.",
-    preco: 59.90,
-    precoDe: 0,
-    parcelas: 0,
-    imagem: "",
-    link: "#",
-    selo: "Novo",
-    status: "disponivel"
-  },
-  {
-    id: "bolsa-transversal-couro",
-    nome: "Bolsa transversal estruturada",
-    categoria: "acessorios",
-    descricao: "Alça ajustável, fecho magnético e divisória interna.",
-    preco: 119.90,
-    precoDe: 159.90,
-    parcelas: 3,
-    imagem: "",
-    link: "#",
-    selo: "",
-    status: "esgotado"
-  },
-  {
-    id: "conjunto-alfaiataria",
-    nome: "Conjunto alfaiataria",
-    categoria: "roupas",
-    descricao: "Blazer e calça pantalona com tecido que não amassa.",
-    preco: 239.90,
-    precoDe: 329.90,
-    parcelas: 4,
-    imagem: "",
-    link: "#",
-    selo: "",
-    status: "disponivel"
-  },
-  {
-    id: "batom-liquido-matte",
-    nome: "Batom líquido matte",
-    categoria: "maquiagem",
-    descricao: "Alta fixação sem ressecar. Kit com 3 cores.",
-    preco: 49.90,
-    precoDe: 0,
-    parcelas: 0,
-    imagem: "",
-    link: "#",
-    selo: "",
-    status: "disponivel"
-  }
+  { id:"vestido-midi-linho", nome:"Vestido midi em linho", categoria:"roupas", descricao:"Leve, com bolsos e alças reguláveis", preco:149.90, precoDe:219.90, imagem:"", link:"#", selo:"Mais vendido", status:"disponivel" },
+  { id:"paleta-sombras-nude", nome:"Paleta de sombras nude", categoria:"maquiagem", descricao:"12 tons foscos e cintilantes", preco:69.90, precoDe:99.90, imagem:"", link:"#", selo:"", status:"disponivel" },
+  { id:"serum-vitamina-c", nome:"Sérum facial vitamina C", categoria:"cuidados", descricao:"Textura fluida, uso diário", preco:59.90, precoDe:0, imagem:"", link:"#", selo:"Novo", status:"disponivel" },
+  { id:"conjunto-alfaiataria", nome:"Conjunto alfaiataria", categoria:"roupas", descricao:"Blazer e pantalona que não amassam", preco:239.90, precoDe:329.90, imagem:"", link:"#", selo:"", status:"disponivel" },
+  { id:"bolsa-transversal", nome:"Bolsa transversal estruturada", categoria:"acessorios", descricao:"Alça ajustável e divisória interna", preco:119.90, precoDe:159.90, imagem:"", link:"#", selo:"", status:"esgotado" }
 ];
 </script>
+
 <script>
-/* BC Bella Choice - comportamento da vitrine (sem bibliotecas externas) */
 (function () {
   "use strict";
-  var C = window.BELLA_CONFIG || {};
-  var doc = document;
+  var C = window.BELLA_CONFIG || {}, doc = document;
 
-  /* ---------- Paleta ---------- */
+  /* Paleta */
   var temas = ["sage", "vinho", "crepusculo"];
-  function aplicarTema(t) {
-    if (temas.indexOf(t) < 0) t = "sage";
-    doc.documentElement.setAttribute("data-tema", t);
-  }
-  var temaUrl = (location.search.match(/[?&]tema=(\w+)/) || [])[1];
-  aplicarTema(temaUrl || C.tema);
+  function tema(t) { doc.documentElement.setAttribute("data-tema", temas.indexOf(t) > -1 ? t : "sage"); }
+  tema((location.search.match(/[?&]tema=(\w+)/) || [])[1] || C.tema);
 
-  /* ---------- Pixel Meta: eventos personalizados ---------- */
+  /* Pixel: eventos personalizados */
   function evento(nome, dados) {
     if (typeof window.fbq === "function") window.fbq("trackCustom", nome, dados || {});
     if (!C.pixelId && window.console) console.info("[pixel desligado] " + nome, dados || "");
   }
-  window.bellaEvento = evento;
-
-  /* Qualquer elemento com data-evento dispara o evento ao ser clicado */
   doc.addEventListener("click", function (e) {
-    var el = e.target.closest ? e.target.closest("[data-evento]") : null;
-    if (el) evento(el.getAttribute("data-evento"), { destino: el.getAttribute("href") || "" });
+    var el = e.target.closest && e.target.closest("[data-evento]");
+    if (el) evento(el.getAttribute("data-evento"));
   });
-
-  /* ---------- Contatos vindos do config ---------- */
-  doc.querySelectorAll("[data-insta]").forEach(function (a) { if (C.instagram) a.href = C.instagram; });
-  doc.querySelectorAll("[data-insta-usuario]").forEach(function (s) { if (C.instagramUsuario) s.textContent = C.instagramUsuario; });
-  doc.querySelectorAll("[data-email]").forEach(function (a) {
-    if (C.email) { a.href = "mailto:" + C.email; if (!a.children.length) a.textContent = C.email; }
-  });
-  doc.querySelectorAll("[data-ano]").forEach(function (s) { s.textContent = new Date().getFullYear(); });
-
-  /* ---------- FAQ: registra qual pergunta foi aberta ---------- */
   doc.querySelectorAll(".faq details").forEach(function (d) {
     d.addEventListener("toggle", function () {
       if (d.open) evento("pergunta faq #vitrine", { pergunta: d.querySelector("summary").textContent.trim() });
     });
   });
 
-  /* ---------- Seletor de paletas para avaliacao (abra com ?paletas) ---------- */
+  /* Contatos e ano */
+  doc.querySelectorAll("[data-insta]").forEach(function (a) { if (C.instagram) a.href = C.instagram; });
+  doc.querySelectorAll("[data-insta-usuario]").forEach(function (s) { if (C.instagramUsuario) s.textContent = C.instagramUsuario; });
+  doc.querySelectorAll("[data-ano]").forEach(function (s) { s.textContent = new Date().getFullYear(); });
+
+  /* Seletor de paletas para comparar (abra com ?paletas) */
   if (/[?&]paletas/.test(location.search)) {
-    var cores = { sage: "#7d8f72", vinho: "#7b2d3b", crepusculo: "#a0605e" };
-    var box = doc.createElement("div");
+    var cores = { sage: "#7d8f72", vinho: "#7b2d3b", crepusculo: "#a0605e" }, box = doc.createElement("div");
     box.className = "paletas";
-    box.setAttribute("aria-label", "Testar paletas");
     temas.forEach(function (t) {
       var b = doc.createElement("button");
       b.type = "button"; b.title = t; b.style.background = cores[t];
       b.setAttribute("aria-pressed", doc.documentElement.getAttribute("data-tema") === t);
-      b.onclick = function () {
-        aplicarTema(t);
-        box.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      };
+      b.onclick = function () { tema(t); box.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); };
       box.appendChild(b);
     });
     doc.body.appendChild(box);
   }
 
-  /* ---------- Vitrine ---------- */
-  var grade = doc.getElementById("grade-produtos");
-  if (!grade) return;
-
-  var ICONES = {
-    todos: '<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>',
-    roupas: '<path d="M10 4.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V9"/><path d="M12 9 3.4 15.2c-.8.6-.4 1.8.6 1.8h16c1 0 1.4-1.2.6-1.8L12 9Z"/>',
-    maquiagem: '<path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9Z"/><path d="M10 11V7.5L14 4v7"/><path d="M9 15h6"/>',
-    cuidados: '<path d="M10 3h4v3h-4z"/><path d="M9 6h6l1 3v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-3Z"/><path d="M8 13h8"/>',
-    acessorios: '<path d="M5 8h14l-1.2 11.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/>'
-  };
-  var NOMES = { todos: "Tudo", roupas: "Roupas", maquiagem: "Maquiagem", cuidados: "Cuidados", acessorios: "Acessórios" };
-
-  function svg(nome, classe) {
-    return '<svg class="' + (classe || "icone") + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICONES[nome] || ICONES.todos) + "</svg>";
-  }
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
+  /* Lista de produtos */
+  var alvo = doc.getElementById("links");
+  var moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+  var CATS = ["roupas", "maquiagem", "cuidados", "acessorios"];
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); }
   function num(v) {
     if (typeof v === "number") return v;
     v = String(v || "").replace(/[^\d,.-]/g, "");
     if (v.indexOf(",") > -1) v = v.replace(/\./g, "").replace(",", ".");
     return parseFloat(v) || 0;
   }
-  var moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
-
-  function normalizar(p) {
-    var status = String(p.status || "disponivel").toLowerCase().trim();
+  function norm(p) {
+    var cat = String(p.categoria || "").toLowerCase().trim().normalize("NFD").replace(/[̀-ͯ]/g, "");
     return {
-      id: String(p.id || p.nome || "").trim(),
-      nome: String(p.nome || "").trim(),
-      categoria: String(p.categoria || "").toLowerCase().trim().normalize("NFD").replace(/[̀-ͯ]/g, ""),
-      descricao: p.descricao || "",
-      preco: num(p.preco),
-      precoDe: num(p.precoDe || p.preco_de),
-      parcelas: parseInt(p.parcelas, 10) || 0,
-      imagem: String(p.imagem || "").trim(),
-      link: String(p.link || "#").trim(),
-      selo: String(p.selo || "").trim(),
-      status: status
+      id: String(p.id || p.nome || "").trim(), nome: String(p.nome || "").trim(),
+      categoria: CATS.indexOf(cat) > -1 ? cat : "acessorios", descricao: String(p.descricao || "").trim(),
+      preco: num(p.preco), precoDe: num(p.precoDe), imagem: String(p.imagem || "").trim(),
+      link: String(p.link || "#").trim(), selo: String(p.selo || "").trim(),
+      status: String(p.status || "disponivel").toLowerCase().trim()
     };
   }
-
-  function card(p) {
-    var esgotado = p.status === "esgotado";
-    var midia = p.imagem
-      ? '<img src="' + esc(p.imagem) + '" alt="' + esc(p.nome) + '" loading="lazy" decoding="async" width="400" height="500">'
-      : '<div class="card-arte">' + svg(p.categoria) + "</div>";
-    var selo = esgotado ? "Esgotado" : p.selo;
-    var preco = "";
-    if (p.preco) {
-      preco = '<div class="preco">' +
-        (p.precoDe > p.preco ? "<s>" + moeda.format(p.precoDe) + "</s>" : "") +
-        "<b>" + moeda.format(p.preco) + "</b>" +
-        (p.parcelas > 1 ? "<small>ou " + p.parcelas + "x de " + moeda.format(p.preco / p.parcelas) + " sem juros</small>" : "") +
-        "</div>";
-    }
-    var botao = esgotado
-      ? '<a class="botao vazado" href="' + esc(C.instagram || "#") + '" target="_blank" rel="noopener" data-acao="avise" data-id="' + esc(p.id) + '">Avise-me quando voltar</a>'
-      : '<a class="botao" href="' + esc(p.link) + '" data-acao="comprar" data-id="' + esc(p.id) + '">Ver detalhes</a>';
-    return '<article class="card' + (esgotado ? " esgotado" : "") + '">' +
-      '<div class="card-midia">' + midia + (selo ? '<span class="selo">' + esc(selo) + "</span>" : "") + "</div>" +
-      '<div class="card-corpo">' +
-      '<span class="card-cat">' + esc(NOMES[p.categoria] || p.categoria) + "</span>" +
-      "<h3>" + esc(p.nome) + "</h3>" +
-      (p.descricao ? '<p class="card-desc">' + esc(p.descricao) + "</p>" : "") +
-      preco + botao +
-      "</div></article>";
+  function item(p) {
+    var esg = p.status === "esgotado";
+    var mini = p.imagem
+      ? '<img src="' + esc(p.imagem) + '" alt="" loading="lazy" decoding="async" width="66" height="66">'
+      : '<svg class="icone"><use href="#i-' + p.categoria + '"/></svg>';
+    var selo = esg ? "Esgotado" : p.selo;
+    var valor = p.preco ? '<div class="valor">' + (p.precoDe > p.preco ? "<s>" + moeda.format(p.precoDe) + "</s>" : "") + moeda.format(p.preco) + "</div>" : "";
+    var desc = esg ? "Siga o Instagram para saber da reposição" : p.descricao;
+    var href = esg ? (C.instagram || "#") : p.link;
+    return '<a class="link' + (esg ? " esgotado" : "") + '" href="' + esc(href) + '"' + (esg ? ' target="_blank" rel="noopener"' : "") +
+      ' data-id="' + esc(p.id) + '" data-esgotado="' + esg + '">' +
+      '<span class="miniatura">' + mini + "</span>" +
+      '<span class="info">' + (selo ? '<span class="selo">' + esc(selo) + "</span>" : "") +
+      "<strong>" + esc(p.nome) + "</strong>" + (desc ? "<small>" + esc(desc) + "</small>" : "") + valor + "</span>" +
+      '<svg class="icone seta"><use href="#i-seta"/></svg></a>';
   }
-
   var produtos = [];
-  var filtroAtual = "todos";
-
-  function render() {
-    var lista = produtos.filter(function (p) {
-      return p.status !== "oculto" && (filtroAtual === "todos" || p.categoria === filtroAtual);
-    });
-    /* disponiveis primeiro, esgotados no fim */
-    lista.sort(function (a, b) { return (a.status === "esgotado") - (b.status === "esgotado"); });
-    grade.innerHTML = lista.length
-      ? lista.map(card).join("")
-      : '<p class="vazio">Novidades chegando nesta categoria. Acompanhe pelo Instagram.</p>';
+  function montar(lista) {
+    produtos = (lista || []).map(norm).filter(function (p) { return p.nome && p.status !== "oculto"; });
+    produtos.sort(function (a, b) { return (a.status === "esgotado") - (b.status === "esgotado"); });
+    alvo.innerHTML = produtos.length ? produtos.map(item).join("") : '<p class="carregando">Novidades chegando. Acompanhe pelo Instagram.</p>';
   }
-
-  function montarFiltros() {
-    var alvo = doc.getElementById("filtros");
-    if (!alvo) return;
-    var cats = ["todos"];
-    produtos.forEach(function (p) {
-      if (p.status !== "oculto" && cats.indexOf(p.categoria) < 0 && p.categoria) cats.push(p.categoria);
-    });
-    alvo.innerHTML = cats.map(function (c) {
-      return '<button type="button" class="filtro" data-cat="' + esc(c) + '" aria-pressed="' + (c === filtroAtual) + '">' +
-        svg(c) + esc(NOMES[c] || c) + "</button>";
-    }).join("");
-    alvo.onclick = function (e) {
-      var b = e.target.closest("button[data-cat]");
-      if (!b) return;
-      filtroAtual = b.getAttribute("data-cat");
-      alvo.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      evento("filtro categoria #vitrine", { categoria: filtroAtual });
-      render();
-    };
-  }
-
-  grade.addEventListener("click", function (e) {
-    var a = e.target.closest("a[data-acao]");
+  alvo.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-id]");
     if (!a) return;
     var p = produtos.filter(function (x) { return x.id === a.getAttribute("data-id"); })[0] || {};
-    var dados = { produto: p.nome, categoria: p.categoria, preco: p.preco };
-    if (a.getAttribute("data-acao") === "comprar") evento("clique produto #vitrine", dados);
-    else evento("interesse esgotado #vitrine", dados);
+    evento(a.getAttribute("data-esgotado") === "true" ? "clique esgotado #vitrine" : "clique produto #vitrine",
+      { produto: p.nome, categoria: p.categoria, preco: p.preco });
   });
 
-  function iniciar(lista) {
-    produtos = (lista || []).map(normalizar).filter(function (p) { return p.nome; });
-    montarFiltros();
-    render();
-  }
-
-  /* CSV simples (aceita aspas e virgulas dentro de aspas) */
-  function lerCsv(txt) {
-    var linhas = [], campo = "", linha = [], aspas = false;
-    for (var i = 0; i < txt.length; i++) {
-      var c = txt[i];
-      if (aspas) {
-        if (c === '"' && txt[i + 1] === '"') { campo += '"'; i++; }
-        else if (c === '"') aspas = false;
-        else campo += c;
-      } else if (c === '"') aspas = true;
-      else if (c === ",") { linha.push(campo); campo = ""; }
-      else if (c === "\n" || c === "\r") {
-        if (c === "\r" && txt[i + 1] === "\n") i++;
-        linha.push(campo); linhas.push(linha); linha = []; campo = "";
-      } else campo += c;
+  /* Leitura da planilha (CSV publicado) */
+  function csv(t) {
+    var L = [], f = "", l = [], q = false;
+    for (var i = 0; i < t.length; i++) {
+      var c = t[i];
+      if (q) { if (c === '"' && t[i + 1] === '"') { f += '"'; i++; } else if (c === '"') q = false; else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ",") { l.push(f); f = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && t[i + 1] === "\n") i++; l.push(f); L.push(l); l = []; f = ""; }
+      else f += c;
     }
-    if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
-    var cab = (linhas.shift() || []).map(function (h) { return h.trim(); });
-    return linhas.filter(function (l) { return l.join("").trim(); }).map(function (l) {
-      var o = {}; cab.forEach(function (h, k) { o[h] = (l[k] || "").trim(); }); return o;
+    if (f || l.length) { l.push(f); L.push(l); }
+    var h = (L.shift() || []).map(function (x) { return x.trim(); });
+    return L.filter(function (r) { return r.join("").trim(); }).map(function (r) {
+      var o = {}; h.forEach(function (k, j) { o[k] = (r[j] || "").trim(); }); return o;
     });
   }
-
   var reserva = window.BELLA_PRODUTOS || [];
   if (C.planilhaCsv) {
-    var concluido = false;
-    var limite = setTimeout(function () { if (!concluido) { concluido = true; iniciar(reserva); } }, 5000);
+    var feito = false, fim = function (l) { if (!feito) { feito = true; montar(l); } };
+    setTimeout(function () { fim(reserva); }, 5000);
     fetch(C.planilhaCsv + (C.planilhaCsv.indexOf("?") > -1 ? "&" : "?") + "t=" + Math.floor(Date.now() / 60000))
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(function (t) { if (!concluido) { concluido = true; clearTimeout(limite); iniciar(lerCsv(t)); } })
-      .catch(function () { if (!concluido) { concluido = true; clearTimeout(limite); iniciar(reserva); } });
-  } else {
-    iniciar(reserva);
-  }
+      .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+      .then(function (t) { fim(csv(t)); })
+      .catch(function () { fim(reserva); });
+  } else montar(reserva);
 })();
 </script>
 </body>
 </html>
-
