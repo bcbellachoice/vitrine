@@ -13,8 +13,306 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/estilo.css">
-<script src="assets/config.js"></script>
+<style>
+/* Bella Choice - estilo base
+   Leve de proposito: sem frameworks, sem imagens pesadas, animacoes curtas
+   e desligadas para quem prefere menos movimento. */
+
+/* ---------- Paletas ---------- */
+:root,
+[data-tema="sage"] {
+  --fundo: #f6f1e7;        /* creme */
+  --fundo-alt: #ede6d8;
+  --superficie: #fffdf8;
+  --texto: #2f332c;
+  --texto-suave: #5f6559;
+  --marca: #7d8f72;        /* verde sage */
+  --marca-forte: #5a6b50;
+  --marca-clara: #dfe5d6;
+  --detalhe: #b89b6a;      /* dourado discreto */
+  --borda: #ddd4c3;
+  --esgotado: #8a8578;
+}
+[data-tema="vinho"] {
+  --fundo: #faf7f2;        /* off-white */
+  --fundo-alt: #f1ebe3;
+  --superficie: #ffffff;
+  --texto: #2e2124;
+  --texto-suave: #6b5a5e;
+  --marca: #7b2d3b;        /* vinho */
+  --marca-forte: #5c1f2b;
+  --marca-clara: #f0dfe1;
+  --detalhe: #b08d57;
+  --borda: #e5dad2;
+  --esgotado: #8d8285;
+}
+[data-tema="crepusculo"] {
+  --fundo: #f8f2ec;        /* areia clara */
+  --fundo-alt: #efe4da;
+  --superficie: #fffaf6;
+  --texto: #33282a;
+  --texto-suave: #6e5f60;
+  --marca: #a0605e;        /* rose queimado, tom de fim de tarde */
+  --marca-forte: #7c4544;
+  --marca-clara: #f1dcd6;
+  --detalhe: #8b7aa8;      /* lilas suave */
+  --borda: #e6d8cc;
+  --esgotado: #8f8582;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, .serif {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: .005em;
+  margin: 0;
+}
+p { margin: 0 0 1em; }
+.icone { width: 1.25em; height: 1.25em; flex: none; stroke: currentColor; fill: none;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sobrelinha {
+  display: inline-block; font-size: .75rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--marca-forte); margin-bottom: 14px;
+}
+:focus-visible { outline: 2px solid var(--marca); outline-offset: 3px; }
+
+/* ---------- Faixa superior ---------- */
+.faixa {
+  background: var(--marca-forte); color: var(--superficie);
+  font-size: .8rem; letter-spacing: .04em; text-align: center; padding: 8px 16px;
+}
+
+/* ---------- Cabecalho ---------- */
+.topo {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--fundo) 92%, transparent);
+  border-bottom: 1px solid var(--borda);
+}
+@supports not (background: color-mix(in srgb, red 50%, transparent)) { .topo { background: var(--fundo); } }
+.topo .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+.logo b { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 1.6rem; letter-spacing: .02em; }
+.logo small { font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--texto-suave); margin-top: 4px; }
+.menu { display: flex; gap: 26px; font-size: .9rem; }
+.menu a { text-decoration: none; color: var(--texto-suave); }
+.menu a:hover { color: var(--texto); }
+.topo-insta { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: .9rem; color: var(--marca-forte); }
+@media (max-width: 760px) { .menu { display: none; } }
+
+/* ---------- Abertura ---------- */
+.abertura { padding: 72px 0 56px; position: relative; overflow: hidden; }
+.abertura .container { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+.abertura h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+.abertura h1 em { font-style: italic; color: var(--marca-forte); }
+.abertura p.lead { font-size: 1.08rem; color: var(--texto-suave); max-width: 46ch; margin: 22px 0 30px; }
+.arte-abertura { justify-self: center; width: 100%; max-width: 360px; color: var(--marca); }
+.arte-abertura svg { width: 100%; height: auto; }
+@media (max-width: 760px) {
+  .abertura { padding: 48px 0 32px; }
+  .abertura .container { grid-template-columns: 1fr; }
+  .arte-abertura { max-width: 220px; order: -1; }
+}
+
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 26px; border-radius: 999px; border: 1px solid var(--marca-forte);
+  background: var(--marca-forte); color: var(--superficie); text-decoration: none;
+  font: inherit; font-size: .95rem; letter-spacing: .02em; cursor: pointer;
+  transition: background-color .2s, color .2s;
+}
+.botao:hover { background: var(--texto); border-color: var(--texto); }
+.botao.vazado { background: transparent; color: var(--marca-forte); }
+.botao.vazado:hover { background: var(--marca-forte); color: var(--superficie); }
+.botao[aria-disabled="true"] { background: transparent; border-color: var(--borda); color: var(--esgotado); cursor: not-allowed; }
+
+/* ---------- Diferenciais ---------- */
+.diferenciais { border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); background: var(--superficie); }
+.diferenciais ul { list-style: none; margin: 0; padding: 22px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.diferenciais li { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: var(--texto-suave); }
+.diferenciais .icone { width: 26px; height: 26px; color: var(--marca); }
+.diferenciais strong { display: block; color: var(--texto); font-weight: 500; }
+@media (max-width: 860px) { .diferenciais ul { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Secoes ---------- */
+.secao { padding: 72px 0; }
+.secao.alt { background: var(--fundo-alt); }
+.cabeca-secao { text-align: center; max-width: 620px; margin: 0 auto 36px; }
+.cabeca-secao h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.cabeca-secao p { color: var(--texto-suave); margin-top: 12px; }
+@media (max-width: 760px) { .secao { padding: 52px 0; } }
+
+/* ---------- Filtros ---------- */
+.filtros { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.filtro {
+  font: inherit; font-size: .88rem; padding: 8px 18px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--borda); background: transparent; color: var(--texto-suave);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.filtro .icone { width: 16px; height: 16px; }
+.filtro[aria-pressed="true"] { background: var(--texto); border-color: var(--texto); color: var(--superficie); }
+
+/* ---------- Cards ---------- */
+.grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+@media (max-width: 900px) { .grade { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+@media (max-width: 420px) { .grade { gap: 12px; } }
+.card {
+  background: var(--superficie); border: 1px solid var(--borda); border-radius: 4px;
+  display: flex; flex-direction: column; overflow: hidden;
+  content-visibility: auto; contain-intrinsic-size: 420px;
+}
+.card-midia { position: relative; aspect-ratio: 4 / 5; background: var(--marca-clara); overflow: hidden; }
+.card-midia img { width: 100%; height: 100%; object-fit: cover; }
+.card-arte { width: 100%; height: 100%; display: grid; place-items: center; color: var(--marca); }
+.card-arte svg { width: 38%; height: auto; stroke-width: 1; }
+.selo {
+  position: absolute; top: 12px; left: 12px; background: var(--superficie); color: var(--texto);
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 2px;
+}
+.card.esgotado .card-midia > :not(.selo) { filter: grayscale(1); opacity: .55; }
+.card.esgotado .selo { background: var(--texto); color: var(--superficie); }
+.card-corpo { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.card-cat { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--texto-suave); }
+.card h3 { font-size: 1.35rem; margin: 6px 0 6px; }
+.card-desc { font-size: .88rem; color: var(--texto-suave); margin-bottom: 14px; }
+.preco { margin-top: auto; margin-bottom: 14px; }
+.preco s { color: var(--texto-suave); font-size: .85rem; margin-right: 8px; }
+.preco b { font-size: 1.25rem; font-weight: 500; }
+.preco small { display: block; color: var(--texto-suave); font-size: .8rem; }
+.card .botao { width: 100%; min-height: 44px; font-size: .88rem; }
+@media (max-width: 520px) {
+  .card-corpo { padding: 12px 12px 14px; }
+  .card h3 { font-size: 1.1rem; }
+  .card-desc { display: none; }
+  .preco b { font-size: 1.05rem; }
+  .card .botao { padding: 0 10px; font-size: .8rem; }
+}
+.vazio { text-align: center; color: var(--texto-suave); padding: 40px 0; grid-column: 1 / -1; }
+
+/* ---------- Como funciona ---------- */
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: passo; }
+.passo { padding: 28px; background: var(--superficie); border: 1px solid var(--borda); border-radius: 4px; }
+.passo .icone { width: 30px; height: 30px; color: var(--marca); margin-bottom: 16px; }
+.passo h3 { font-size: 1.35rem; margin-bottom: 8px; }
+.passo p { font-size: .93rem; color: var(--texto-suave); margin: 0; }
+@media (max-width: 860px) { .passos { grid-template-columns: 1fr; } }
+.aviso-intermediacao {
+  margin-top: 32px; padding: 20px 24px; border-left: 3px solid var(--detalhe);
+  background: var(--superficie); font-size: .92rem; color: var(--texto-suave);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.aviso-intermediacao .icone { color: var(--detalhe); width: 22px; height: 22px; margin-top: 2px; }
+.aviso-intermediacao p { margin: 0; }
+.aviso-intermediacao strong { color: var(--texto); font-weight: 500; }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 760px; margin: 0 auto; }
+.faq details { border-bottom: 1px solid var(--borda); }
+.faq summary {
+  list-style: none; cursor: pointer; padding: 22px 4px; display: flex; justify-content: space-between;
+  align-items: center; gap: 16px; font-size: 1.05rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .icone { color: var(--marca); transition: transform .2s; }
+.faq details[open] summary .icone { transform: rotate(45deg); }
+.faq .resposta { padding: 0 4px 22px; color: var(--texto-suave); font-size: .95rem; }
+
+/* ---------- Chamada Instagram ---------- */
+.chamada { text-align: center; }
+.chamada h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 12px; }
+.chamada p { color: var(--texto-suave); margin-bottom: 26px; }
+
+/* ---------- Rodape ---------- */
+.rodape { background: var(--texto); color: color-mix(in srgb, var(--superficie) 78%, transparent); font-size: .86rem; padding: 52px 0 28px; }
+@supports not (color: color-mix(in srgb, red 50%, transparent)) { .rodape { color: #d9d4cc; } }
+.rodape a { text-decoration: none; }
+.rodape a:hover { text-decoration: underline; }
+.rodape-grade { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+.rodape .logo b { color: var(--superficie); }
+.rodape .logo small { color: inherit; }
+.rodape h4 { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--superficie); margin: 0 0 14px; font-weight: 500; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rodape li a { display: inline-flex; align-items: center; gap: 8px; }
+.avisos-legais { border-top: 1px solid rgba(255,255,255,.14); padding-top: 22px; font-size: .78rem; line-height: 1.7; }
+.avisos-legais p { margin: 0 0 10px; }
+@media (max-width: 760px) { .rodape-grade { grid-template-columns: 1fr; gap: 24px; } }
+
+/* ---------- Paginas legais ---------- */
+.legal { padding: 56px 0 72px; }
+.legal .container { max-width: 780px; }
+.legal h1 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 8px; }
+.legal .atualizado { color: var(--texto-suave); font-size: .88rem; margin-bottom: 28px; }
+.legal nav.indice { background: var(--superficie); border: 1px solid var(--borda); padding: 18px 22px; margin-bottom: 40px; font-size: .92rem; }
+.legal nav.indice ol { margin: 8px 0 0; padding-left: 20px; }
+.legal h2 { font-size: 1.9rem; margin: 48px 0 14px; padding-top: 12px; border-top: 1px solid var(--borda); }
+.legal h3 { font-size: 1.3rem; margin: 26px 0 8px; }
+.legal p, .legal li { color: var(--texto-suave); font-size: .97rem; }
+.legal li { margin-bottom: 6px; }
+.legal strong { color: var(--texto); font-weight: 500; }
+.destaque-legal { background: var(--marca-clara); padding: 18px 22px; border-radius: 4px; margin: 18px 0; }
+.destaque-legal p { color: var(--texto); margin: 0; }
+
+/* ---------- Seletor de paletas (apenas com ?paletas na URL) ---------- */
+.paletas {
+  position: fixed; right: 16px; bottom: 16px; z-index: 50; background: var(--superficie);
+  border: 1px solid var(--borda); border-radius: 999px; padding: 6px; display: flex; gap: 6px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+}
+.paletas button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--superficie); cursor: pointer; padding: 0; }
+.paletas button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--texto); }
+
+/* ---------- Movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+<script>
+/* ==========================================================
+   BELLA CHOICE - CONFIGURACAO GERAL
+   Este e o unico arquivo que voce precisa mexer para:
+   - colocar o ID do pixel da Meta
+   - trocar a paleta de cores
+   - ligar a planilha Google como fonte dos produtos
+   ========================================================== */
+window.BELLA_CONFIG = {
+
+  /* ID do pixel da Meta (Business Manager > Gerenciador de Eventos).
+     Enquanto estiver vazio, nenhum dado e enviado e os eventos
+     aparecem apenas no console do navegador. */
+  pixelId: "",
+
+  /* Paleta do site: "sage" (verde sage + creme, padrao),
+     "vinho" (vinho + off-white) ou "crepusculo" (rose queimado + areia). */
+  tema: "sage",
+
+  /* Planilha Google publicada como CSV (opcional, recomendado).
+     Arquivo > Compartilhar > Publicar na web > aba "produtos" > CSV.
+     Cole o link aqui. Se ficar vazio, o site usa o arquivo produtos.js. */
+  planilhaCsv: "",
+
+  /* Contatos que aparecem no rodape e nas paginas legais */
+  instagram: "https://instagram.com/bellachoice",
+  instagramUsuario: "@bellachoice",
+  email: "contato@bellachoice.com.br",
+  whatsapp: "" /* ex.: "5511999999999" (somente numeros) */
+};
+</script>
 
 <!-- Meta Pixel - o ID fica em assets/config.js (pixelId). Sem ID, nada e enviado. -->
 <script>
@@ -239,7 +537,331 @@
   </div>
 </footer>
 
-<script src="produtos.js"></script>
-<script src="assets/app.js"></script>
+<script>
+/* ==========================================================
+   BELLA CHOICE - LISTA DE PRODUTOS
+   Para marcar como esgotado: troque status para "esgotado".
+   Para esconder da vitrine:   troque status para "oculto".
+   Para voltar a vender:       troque status para "disponivel".
+
+   Campos:
+   id          identificador unico, sem espacos (ex.: "vestido-midi-linho")
+   nome        nome que aparece no card
+   categoria   roupas | maquiagem | cuidados | acessorios
+   descricao   frase curta (ate ~90 caracteres)
+   preco       preco de venda, so numero (ex.: 129.90)
+   precoDe     preco "de" riscado (opcional, deixe 0 para nao mostrar)
+   parcelas    numero de parcelas sem juros (opcional, 0 para nao mostrar)
+   imagem      caminho ou link da foto (opcional; sem foto aparece uma arte)
+   link        pagina de venda do produto ou link do checkout
+   selo        texto pequeno no canto (opcional: "Novo", "Mais vendido"...)
+   status      disponivel | esgotado | oculto
+
+   ATENCAO: os produtos abaixo sao apenas exemplos de layout.
+   ========================================================== */
+window.BELLA_PRODUTOS = [
+  {
+    id: "vestido-midi-linho",
+    nome: "Vestido midi em linho",
+    categoria: "roupas",
+    descricao: "Caimento leve, alcas reguláveis e bolsos laterais.",
+    preco: 149.90,
+    precoDe: 219.90,
+    parcelas: 3,
+    imagem: "",
+    link: "#",
+    selo: "Mais vendido",
+    status: "disponivel"
+  },
+  {
+    id: "paleta-sombras-nude",
+    nome: "Paleta de sombras nude",
+    categoria: "maquiagem",
+    descricao: "12 tons foscos e cintilantes para o dia e a noite.",
+    preco: 69.90,
+    precoDe: 99.90,
+    parcelas: 2,
+    imagem: "",
+    link: "#",
+    selo: "",
+    status: "disponivel"
+  },
+  {
+    id: "serum-vitamina-c",
+    nome: "Sérum facial vitamina C",
+    categoria: "cuidados",
+    descricao: "Textura fluida, absorção rápida, uso diário.",
+    preco: 59.90,
+    precoDe: 0,
+    parcelas: 0,
+    imagem: "",
+    link: "#",
+    selo: "Novo",
+    status: "disponivel"
+  },
+  {
+    id: "bolsa-transversal-couro",
+    nome: "Bolsa transversal estruturada",
+    categoria: "acessorios",
+    descricao: "Alça ajustável, fecho magnético e divisória interna.",
+    preco: 119.90,
+    precoDe: 159.90,
+    parcelas: 3,
+    imagem: "",
+    link: "#",
+    selo: "",
+    status: "esgotado"
+  },
+  {
+    id: "conjunto-alfaiataria",
+    nome: "Conjunto alfaiataria",
+    categoria: "roupas",
+    descricao: "Blazer e calça pantalona com tecido que não amassa.",
+    preco: 239.90,
+    precoDe: 329.90,
+    parcelas: 4,
+    imagem: "",
+    link: "#",
+    selo: "",
+    status: "disponivel"
+  },
+  {
+    id: "batom-liquido-matte",
+    nome: "Batom líquido matte",
+    categoria: "maquiagem",
+    descricao: "Alta fixação sem ressecar. Kit com 3 cores.",
+    preco: 49.90,
+    precoDe: 0,
+    parcelas: 0,
+    imagem: "",
+    link: "#",
+    selo: "",
+    status: "disponivel"
+  }
+];
+</script>
+<script>
+/* Bella Choice - comportamento da vitrine (sem bibliotecas externas) */
+(function () {
+  "use strict";
+  var C = window.BELLA_CONFIG || {};
+  var doc = document;
+
+  /* ---------- Paleta ---------- */
+  var temas = ["sage", "vinho", "crepusculo"];
+  function aplicarTema(t) {
+    if (temas.indexOf(t) < 0) t = "sage";
+    doc.documentElement.setAttribute("data-tema", t);
+  }
+  var temaUrl = (location.search.match(/[?&]tema=(\w+)/) || [])[1];
+  aplicarTema(temaUrl || C.tema);
+
+  /* ---------- Pixel Meta: eventos personalizados ---------- */
+  function evento(nome, dados) {
+    if (typeof window.fbq === "function") window.fbq("trackCustom", nome, dados || {});
+    if (!C.pixelId && window.console) console.info("[pixel desligado] " + nome, dados || "");
+  }
+  window.bellaEvento = evento;
+
+  /* Qualquer elemento com data-evento dispara o evento ao ser clicado */
+  doc.addEventListener("click", function (e) {
+    var el = e.target.closest ? e.target.closest("[data-evento]") : null;
+    if (el) evento(el.getAttribute("data-evento"), { destino: el.getAttribute("href") || "" });
+  });
+
+  /* ---------- Contatos vindos do config ---------- */
+  doc.querySelectorAll("[data-insta]").forEach(function (a) { if (C.instagram) a.href = C.instagram; });
+  doc.querySelectorAll("[data-insta-usuario]").forEach(function (s) { if (C.instagramUsuario) s.textContent = C.instagramUsuario; });
+  doc.querySelectorAll("[data-email]").forEach(function (a) {
+    if (C.email) { a.href = "mailto:" + C.email; if (!a.children.length) a.textContent = C.email; }
+  });
+  doc.querySelectorAll("[data-ano]").forEach(function (s) { s.textContent = new Date().getFullYear(); });
+
+  /* ---------- FAQ: registra qual pergunta foi aberta ---------- */
+  doc.querySelectorAll(".faq details").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (d.open) evento("pergunta faq #vitrine", { pergunta: d.querySelector("summary").textContent.trim() });
+    });
+  });
+
+  /* ---------- Seletor de paletas para avaliacao (abra com ?paletas) ---------- */
+  if (/[?&]paletas/.test(location.search)) {
+    var cores = { sage: "#7d8f72", vinho: "#7b2d3b", crepusculo: "#a0605e" };
+    var box = doc.createElement("div");
+    box.className = "paletas";
+    box.setAttribute("aria-label", "Testar paletas");
+    temas.forEach(function (t) {
+      var b = doc.createElement("button");
+      b.type = "button"; b.title = t; b.style.background = cores[t];
+      b.setAttribute("aria-pressed", doc.documentElement.getAttribute("data-tema") === t);
+      b.onclick = function () {
+        aplicarTema(t);
+        box.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      };
+      box.appendChild(b);
+    });
+    doc.body.appendChild(box);
+  }
+
+  /* ---------- Vitrine ---------- */
+  var grade = doc.getElementById("grade-produtos");
+  if (!grade) return;
+
+  var ICONES = {
+    todos: '<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>',
+    roupas: '<path d="M10 4.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V9"/><path d="M12 9 3.4 15.2c-.8.6-.4 1.8.6 1.8h16c1 0 1.4-1.2.6-1.8L12 9Z"/>',
+    maquiagem: '<path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9Z"/><path d="M10 11V7.5L14 4v7"/><path d="M9 15h6"/>',
+    cuidados: '<path d="M10 3h4v3h-4z"/><path d="M9 6h6l1 3v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-3Z"/><path d="M8 13h8"/>',
+    acessorios: '<path d="M5 8h14l-1.2 11.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/>'
+  };
+  var NOMES = { todos: "Tudo", roupas: "Roupas", maquiagem: "Maquiagem", cuidados: "Cuidados", acessorios: "Acessórios" };
+
+  function svg(nome, classe) {
+    return '<svg class="' + (classe || "icone") + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICONES[nome] || ICONES.todos) + "</svg>";
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function num(v) {
+    if (typeof v === "number") return v;
+    v = String(v || "").replace(/[^\d,.-]/g, "");
+    if (v.indexOf(",") > -1) v = v.replace(/\./g, "").replace(",", ".");
+    return parseFloat(v) || 0;
+  }
+  var moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+
+  function normalizar(p) {
+    var status = String(p.status || "disponivel").toLowerCase().trim();
+    return {
+      id: String(p.id || p.nome || "").trim(),
+      nome: String(p.nome || "").trim(),
+      categoria: String(p.categoria || "").toLowerCase().trim().normalize("NFD").replace(/[̀-ͯ]/g, ""),
+      descricao: p.descricao || "",
+      preco: num(p.preco),
+      precoDe: num(p.precoDe || p.preco_de),
+      parcelas: parseInt(p.parcelas, 10) || 0,
+      imagem: String(p.imagem || "").trim(),
+      link: String(p.link || "#").trim(),
+      selo: String(p.selo || "").trim(),
+      status: status
+    };
+  }
+
+  function card(p) {
+    var esgotado = p.status === "esgotado";
+    var midia = p.imagem
+      ? '<img src="' + esc(p.imagem) + '" alt="' + esc(p.nome) + '" loading="lazy" decoding="async" width="400" height="500">'
+      : '<div class="card-arte">' + svg(p.categoria) + "</div>";
+    var selo = esgotado ? "Esgotado" : p.selo;
+    var preco = "";
+    if (p.preco) {
+      preco = '<div class="preco">' +
+        (p.precoDe > p.preco ? "<s>" + moeda.format(p.precoDe) + "</s>" : "") +
+        "<b>" + moeda.format(p.preco) + "</b>" +
+        (p.parcelas > 1 ? "<small>ou " + p.parcelas + "x de " + moeda.format(p.preco / p.parcelas) + " sem juros</small>" : "") +
+        "</div>";
+    }
+    var botao = esgotado
+      ? '<a class="botao vazado" href="' + esc(C.instagram || "#") + '" target="_blank" rel="noopener" data-acao="avise" data-id="' + esc(p.id) + '">Avise-me quando voltar</a>'
+      : '<a class="botao" href="' + esc(p.link) + '" data-acao="comprar" data-id="' + esc(p.id) + '">Ver detalhes</a>';
+    return '<article class="card' + (esgotado ? " esgotado" : "") + '">' +
+      '<div class="card-midia">' + midia + (selo ? '<span class="selo">' + esc(selo) + "</span>" : "") + "</div>" +
+      '<div class="card-corpo">' +
+      '<span class="card-cat">' + esc(NOMES[p.categoria] || p.categoria) + "</span>" +
+      "<h3>" + esc(p.nome) + "</h3>" +
+      (p.descricao ? '<p class="card-desc">' + esc(p.descricao) + "</p>" : "") +
+      preco + botao +
+      "</div></article>";
+  }
+
+  var produtos = [];
+  var filtroAtual = "todos";
+
+  function render() {
+    var lista = produtos.filter(function (p) {
+      return p.status !== "oculto" && (filtroAtual === "todos" || p.categoria === filtroAtual);
+    });
+    /* disponiveis primeiro, esgotados no fim */
+    lista.sort(function (a, b) { return (a.status === "esgotado") - (b.status === "esgotado"); });
+    grade.innerHTML = lista.length
+      ? lista.map(card).join("")
+      : '<p class="vazio">Novidades chegando nesta categoria. Acompanhe pelo Instagram.</p>';
+  }
+
+  function montarFiltros() {
+    var alvo = doc.getElementById("filtros");
+    if (!alvo) return;
+    var cats = ["todos"];
+    produtos.forEach(function (p) {
+      if (p.status !== "oculto" && cats.indexOf(p.categoria) < 0 && p.categoria) cats.push(p.categoria);
+    });
+    alvo.innerHTML = cats.map(function (c) {
+      return '<button type="button" class="filtro" data-cat="' + esc(c) + '" aria-pressed="' + (c === filtroAtual) + '">' +
+        svg(c) + esc(NOMES[c] || c) + "</button>";
+    }).join("");
+    alvo.onclick = function (e) {
+      var b = e.target.closest("button[data-cat]");
+      if (!b) return;
+      filtroAtual = b.getAttribute("data-cat");
+      alvo.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      evento("filtro categoria #vitrine", { categoria: filtroAtual });
+      render();
+    };
+  }
+
+  grade.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-acao]");
+    if (!a) return;
+    var p = produtos.filter(function (x) { return x.id === a.getAttribute("data-id"); })[0] || {};
+    var dados = { produto: p.nome, categoria: p.categoria, preco: p.preco };
+    if (a.getAttribute("data-acao") === "comprar") evento("clique produto #vitrine", dados);
+    else evento("interesse esgotado #vitrine", dados);
+  });
+
+  function iniciar(lista) {
+    produtos = (lista || []).map(normalizar).filter(function (p) { return p.nome; });
+    montarFiltros();
+    render();
+  }
+
+  /* CSV simples (aceita aspas e virgulas dentro de aspas) */
+  function lerCsv(txt) {
+    var linhas = [], campo = "", linha = [], aspas = false;
+    for (var i = 0; i < txt.length; i++) {
+      var c = txt[i];
+      if (aspas) {
+        if (c === '"' && txt[i + 1] === '"') { campo += '"'; i++; }
+        else if (c === '"') aspas = false;
+        else campo += c;
+      } else if (c === '"') aspas = true;
+      else if (c === ",") { linha.push(campo); campo = ""; }
+      else if (c === "\n" || c === "\r") {
+        if (c === "\r" && txt[i + 1] === "\n") i++;
+        linha.push(campo); linhas.push(linha); linha = []; campo = "";
+      } else campo += c;
+    }
+    if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
+    var cab = (linhas.shift() || []).map(function (h) { return h.trim(); });
+    return linhas.filter(function (l) { return l.join("").trim(); }).map(function (l) {
+      var o = {}; cab.forEach(function (h, k) { o[h] = (l[k] || "").trim(); }); return o;
+    });
+  }
+
+  var reserva = window.BELLA_PRODUTOS || [];
+  if (C.planilhaCsv) {
+    var concluido = false;
+    var limite = setTimeout(function () { if (!concluido) { concluido = true; iniciar(reserva); } }, 5000);
+    fetch(C.planilhaCsv + (C.planilhaCsv.indexOf("?") > -1 ? "&" : "?") + "t=" + Math.floor(Date.now() / 60000))
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (t) { if (!concluido) { concluido = true; clearTimeout(limite); iniciar(lerCsv(t)); } })
+      .catch(function () { if (!concluido) { concluido = true; clearTimeout(limite); iniciar(reserva); } });
+  } else {
+    iniciar(reserva);
+  }
+})();
+</script>
 </body>
 </html>
+
