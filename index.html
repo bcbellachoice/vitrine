@@ -15,7 +15,7 @@
 
 <script>
 /* ==========================================================
-   BC Bella Choice - CONFIGURACAO GERAL
+   BC BELLA CHOICE - CONFIGURACAO GERAL
    (o mesmo bloco existe em aviso-e-privacidade.html;
     ao mudar algo aqui, mude la tambem)
    ========================================================== */
@@ -220,8 +220,9 @@ img { display:block; max-width:100%; }
 
   <footer class="rodape">
     <nav>
-      <a href="https://bcbellachoice.github.io/aviso-e-privacidade/" data-evento="clique aviso e privacidade #vitrine">Aviso e privacidade</a>
+      <a href="https://bcbellachoice.github.io/aviso-e-privacidade" data-evento="clique aviso e privacidade #vitrine">Aviso e privacidade</a>
       <a href="#" data-insta target="_blank" rel="noopener" data-evento="clique instagram rodape #vitrine">Instagram</a>
+      <a href="mailto:bcbellachoice@gmail.com" data-evento="clique email #vitrine">E-mail</a>
     </nav>
     <p>A BC Bella Choice é apenas uma página de divulgação. Não fabricamos, não vendemos e não entregamos os produtos apresentados. Venda, pagamento, envio, garantia e atendimento são de responsabilidade da plataforma de vendas e do fornecedor de cada produto.</p>
     <p>Este site não faz parte do Facebook, do Instagram ou da Meta Platforms, Inc. e não é endossado por eles de forma alguma. Facebook e Instagram são marcas registradas da Meta Platforms, Inc.</p>
@@ -236,14 +237,20 @@ img { display:block; max-width:100%; }
    status: "disponivel" | "esgotado" | "oculto"
    categoria (define o desenho quando nao ha foto):
    roupas | maquiagem | cuidados | acessorios
-   ATENCAO: os itens abaixo sao apenas exemplos de layout.
+   Ordem da lista = ordem na vitrine.
    ========================================================== */
 window.BELLA_PRODUTOS = [
-  { id:"vestido-midi-linho", nome:"Vestido midi em linho", categoria:"roupas", descricao:"Leve, com bolsos e alças reguláveis", preco:149.90, precoDe:219.90, imagem:"", link:"#", selo:"Mais vendido", status:"disponivel" },
-  { id:"paleta-sombras-nude", nome:"Paleta de sombras nude", categoria:"maquiagem", descricao:"12 tons foscos e cintilantes", preco:69.90, precoDe:99.90, imagem:"", link:"#", selo:"", status:"disponivel" },
-  { id:"serum-vitamina-c", nome:"Sérum facial vitamina C", categoria:"cuidados", descricao:"Textura fluida, uso diário", preco:59.90, precoDe:0, imagem:"", link:"#", selo:"Novo", status:"disponivel" },
-  { id:"conjunto-alfaiataria", nome:"Conjunto alfaiataria", categoria:"roupas", descricao:"Blazer e pantalona que não amassam", preco:239.90, precoDe:329.90, imagem:"", link:"#", selo:"", status:"disponivel" },
-  { id:"bolsa-transversal", nome:"Bolsa transversal estruturada", categoria:"acessorios", descricao:"Alça ajustável e divisória interna", preco:119.90, precoDe:159.90, imagem:"", link:"#", selo:"", status:"esgotado" }
+  /* Link de cada produto: https://bcbellachoice.github.io/ + codigo (P01, P02...).
+     imagem: deixe "" para usar o desenho, ou coloque o endereco da foto. */
+  { id:"P01", nome:"Escova alisadora elétrica bivolt vermelha", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P01", selo:"Frete grátis", status:"disponivel" },
+  { id:"P02", nome:"Escova alisadora elétrica bivolt preta", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P02", selo:"Frete grátis", status:"disponivel" },
+  { id:"P03", nome:"Escova alisadora elétrica bivolt verde", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P03", selo:"Frete grátis", status:"disponivel" },
+  { id:"P04", nome:"Base mate de alta cobertura 03 Francisca", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P04", selo:"Frete grátis", status:"disponivel" },
+  { id:"P05", nome:"Base mate de alta cobertura 02 Ana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P05", selo:"Frete grátis", status:"disponivel" },
+  { id:"P06", nome:"Base mate de alta cobertura 05 Adriana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P06", selo:"Frete grátis", status:"disponivel" },
+  { id:"P07", nome:"Base mate de alta cobertura 04 Antônia", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P07", selo:"Frete grátis", status:"disponivel" },
+  { id:"P08", nome:"Base mate de alta cobertura 06 Juliana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P08", selo:"Frete grátis", status:"disponivel" },
+  { id:"P09", nome:"Caneta aparadora recarregável", categoria:"cuidados", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" }
 ];
 </script>
 
