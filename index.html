@@ -103,6 +103,16 @@ img { display:block; max-width:100%; }
 
 /* ---------- Links de produto ---------- */
 .links { display:grid; gap:12px; }
+/* ---------- Tags de categoria ---------- */
+.tags { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin:0 0 18px; }
+.tags[hidden] { display:none; }
+.tag { font:inherit; font-size:.8rem; letter-spacing:.01em; padding:7px 11px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--borda); background:var(--superficie); color:var(--texto); transition:background .2s, color .2s, border-color .2s; }
+.tag:hover { border-color:var(--marca); }
+.tag[aria-pressed="true"] { background:var(--marca-forte); border-color:var(--marca-forte); color:var(--fundo); }
+.tag small { opacity:.7; margin-left:4px; font-size:.75em; }
+.links .link { animation:entra .35s ease both; }
+@keyframes entra { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 .link {
   display:flex; align-items:center; gap:14px; padding:10px 14px 10px 10px;
   background:var(--superficie); border:1px solid var(--borda); border-radius:14px;
@@ -168,6 +178,8 @@ img { display:block; max-width:100%; }
     <symbol id="i-roupas" viewBox="0 0 24 24"><path d="M10 4.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V9"/><path d="M12 9 3.4 15.2c-.8.6-.4 1.8.6 1.8h16c1 0 1.4-1.2.6-1.8L12 9Z"/></symbol>
     <symbol id="i-maquiagem" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9Z"/><path d="M10 11V7.5L14 4v7"/><path d="M9 15h6"/></symbol>
     <symbol id="i-cuidados" viewBox="0 0 24 24"><path d="M10 3h4v3h-4z"/><path d="M9 6h6l1 3v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-3Z"/><path d="M8 13h8"/></symbol>
+    <symbol id="i-cabelo" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="5" rx="1.5"/><path d="M6.5 9v9M9.5 9v11M12.5 9v9M15.5 9v11M18 9v8"/></symbol>
+    <symbol id="i-autocuidado" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
     <symbol id="i-acessorios" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>
   </defs>
 </svg>
@@ -184,6 +196,7 @@ img { display:block; max-width:100%; }
   </header>
 
   <div class="grupo">Nossa seleção</div>
+  <div class="tags" id="tags" role="group" aria-label="Filtrar por categoria" hidden></div>
   <div class="links" id="links" aria-live="polite">
     <p class="carregando">Carregando a seleção...</p>
   </div>
@@ -236,21 +249,21 @@ img { display:block; max-width:100%; }
    LISTA DE PRODUTOS (usada quando nao ha planilha ligada)
    status: "disponivel" | "esgotado" | "oculto"
    categoria (define o desenho quando nao ha foto):
-   roupas | maquiagem | cuidados | acessorios
+   cabelo | maquiagem | autocuidado (tambem: roupas | cuidados | acessorios)
    Ordem da lista = ordem na vitrine.
    ========================================================== */
 window.BELLA_PRODUTOS = [
   /* Link de cada produto: https://bcbellachoice.github.io/ + codigo (P01, P02...).
      imagem: deixe "" para usar o desenho, ou coloque o endereco da foto. */
-  { id:"P01", nome:"Escova alisadora elétrica bivolt vermelha", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P01", selo:"Frete grátis", status:"disponivel" },
-  { id:"P02", nome:"Escova alisadora elétrica bivolt preta", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P02", selo:"Frete grátis", status:"disponivel" },
-  { id:"P03", nome:"Escova alisadora elétrica bivolt verde", categoria:"cuidados", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P03", selo:"Frete grátis", status:"disponivel" },
+  { id:"P01", nome:"Escova alisadora elétrica bivolt vermelha", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P01", selo:"Frete grátis", status:"disponivel" },
+  { id:"P02", nome:"Escova alisadora elétrica bivolt preta", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P02", selo:"Frete grátis", status:"disponivel" },
+  { id:"P03", nome:"Escova alisadora elétrica bivolt verde", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P03", selo:"Frete grátis", status:"disponivel" },
   { id:"P04", nome:"Base mate de alta cobertura 03 Francisca", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P04", selo:"Frete grátis", status:"disponivel" },
   { id:"P05", nome:"Base mate de alta cobertura 02 Ana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P05", selo:"Frete grátis", status:"disponivel" },
   { id:"P06", nome:"Base mate de alta cobertura 05 Adriana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P06", selo:"Frete grátis", status:"disponivel" },
   { id:"P07", nome:"Base mate de alta cobertura 04 Antônia", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P07", selo:"Frete grátis", status:"disponivel" },
   { id:"P08", nome:"Base mate de alta cobertura 06 Juliana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P08", selo:"Frete grátis", status:"disponivel" },
-  { id:"P09", nome:"Caneta aparadora recarregável", categoria:"cuidados", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" }
+  { id:"P09", nome:"Caneta aparadora recarregável", categoria:"autocuidado", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" }
 ];
 </script>
 
@@ -301,7 +314,9 @@ window.BELLA_PRODUTOS = [
   /* Lista de produtos */
   var alvo = doc.getElementById("links");
   var moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
-  var CATS = ["roupas", "maquiagem", "cuidados", "acessorios"];
+  var CATS = ["cabelo", "maquiagem", "autocuidado", "roupas", "cuidados", "acessorios"];
+  /* Nome de cada tag na vitrine (a ordem aqui e a ordem das tags) */
+  var TAGS = { cabelo: "Cabelo", maquiagem: "Maquiagem", autocuidado: "Autocuidado", roupas: "Roupas", cuidados: "Cuidados", acessorios: "Acessórios" };
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); }
   function num(v) {
     if (typeof v === "number") return v;
@@ -339,7 +354,35 @@ window.BELLA_PRODUTOS = [
   function montar(lista) {
     produtos = (lista || []).map(norm).filter(function (p) { return p.nome && p.status !== "oculto"; });
     produtos.sort(function (a, b) { return (a.status === "esgotado") - (b.status === "esgotado"); });
-    alvo.innerHTML = produtos.length ? produtos.map(item).join("") : '<p class="carregando">Novidades chegando. Acompanhe pelo Instagram.</p>';
+    montarTags();
+    mostrar();
+  }
+  /* Tags: "Todos" + uma por categoria que tem produto. Link direto: .../vitrine#cabelo */
+  var caixaTags = doc.getElementById("tags"), tagAtual = "todos";
+  function montarTags() {
+    var usadas = CATS.filter(function (c) { return produtos.some(function (p) { return p.categoria === c; }); });
+    var h = (location.hash || "").replace("#", "").toLowerCase();
+    if (usadas.indexOf(h) > -1) tagAtual = h;
+    if (usadas.length < 2) { caixaTags.hidden = true; return; }
+    caixaTags.hidden = false;
+    caixaTags.innerHTML = [["todos", "Todos", produtos.length]].concat(usadas.map(function (c) {
+      return [c, TAGS[c] || c, produtos.filter(function (p) { return p.categoria === c; }).length];
+    })).map(function (t) {
+      return '<button type="button" class="tag" data-tag="' + t[0] + '" aria-pressed="' + (t[0] === tagAtual) + '">' + esc(t[1]) + "</button>";
+    }).join("");
+  }
+  caixaTags.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-tag]");
+    if (!b) return;
+    tagAtual = b.getAttribute("data-tag");
+    caixaTags.querySelectorAll("[data-tag]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+    if (history.replaceState) history.replaceState(null, "", tagAtual === "todos" ? location.pathname + location.search : "#" + tagAtual);
+    evento("filtro categoria #vitrine", { categoria: tagAtual });
+    mostrar();
+  });
+  function mostrar() {
+    var lista = tagAtual === "todos" ? produtos : produtos.filter(function (p) { return p.categoria === tagAtual; });
+    alvo.innerHTML = lista.length ? lista.map(item).join("") : '<p class="carregando">Novidades chegando. Acompanhe pelo Instagram.</p>';
   }
   alvo.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-id]");
