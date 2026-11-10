@@ -103,8 +103,22 @@ img { display:block; max-width:100%; }
 
 /* ---------- Links de produto ---------- */
 .links { display:grid; gap:12px; }
+/* ---------- Pesquisa ---------- */
+.busca { position:relative; margin:0 0 12px; }
+.busca .icone { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--suave); width:18px; height:18px; pointer-events:none; }
+.busca input { width:100%; font:inherit; font-size:16px; color:var(--texto); background:var(--superficie); border:1px solid var(--borda);
+  border-radius:999px; padding:11px 40px 11px 42px; outline:none; transition:border-color .2s, box-shadow .2s; -webkit-appearance:none; appearance:none; }
+.busca input::placeholder { color:var(--suave); opacity:.8; }
+.busca input:focus { border-color:var(--marca); box-shadow:0 0 0 3px var(--marca-clara); }
+.busca input::-webkit-search-cancel-button { display:none; }
+.busca .limpar { position:absolute; right:8px; top:50%; transform:translateY(-50%); width:28px; height:28px; border:0; border-radius:50%;
+  background:var(--marca-clara); color:var(--marca-forte); cursor:pointer; display:grid; place-items:center; padding:0; }
+.busca .limpar[hidden] { display:none; }
+.busca .limpar .icone { position:static; transform:rotate(45deg); width:14px; height:14px; color:inherit; }
 /* ---------- Tags de categoria ---------- */
-.tags { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin:0 0 18px; }
+.tags { display:flex; flex-wrap:nowrap; justify-content:flex-start; gap:6px; margin:0 0 18px; padding:2px 0; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.tags::-webkit-scrollbar { display:none; }
+.tag { flex:none; }
 .tags[hidden] { display:none; }
 .tag { font:inherit; font-size:.8rem; letter-spacing:.01em; padding:7px 11px; border-radius:999px; cursor:pointer;
   border:1px solid var(--borda); background:var(--superficie); color:var(--texto); transition:background .2s, color .2s, border-color .2s; }
@@ -178,6 +192,7 @@ img { display:block; max-width:100%; }
     <symbol id="i-roupas" viewBox="0 0 24 24"><path d="M10 4.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V9"/><path d="M12 9 3.4 15.2c-.8.6-.4 1.8.6 1.8h16c1 0 1.4-1.2.6-1.8L12 9Z"/></symbol>
     <symbol id="i-maquiagem" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9Z"/><path d="M10 11V7.5L14 4v7"/><path d="M9 15h6"/></symbol>
     <symbol id="i-cuidados" viewBox="0 0 24 24"><path d="M10 3h4v3h-4z"/><path d="M9 6h6l1 3v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-3Z"/><path d="M8 13h8"/></symbol>
+    <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
     <symbol id="i-cabelo" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="5" rx="1.5"/><path d="M6.5 9v9M9.5 9v11M12.5 9v9M15.5 9v11M18 9v8"/></symbol>
     <symbol id="i-autocuidado" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
     <symbol id="i-acessorios" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>
@@ -196,6 +211,12 @@ img { display:block; max-width:100%; }
   </header>
 
   <div class="grupo">Nossa seleção</div>
+  <div class="busca" role="search">
+    <svg class="icone"><use href="#i-lupa"/></svg>
+    <label class="sr" for="busca">Buscar produto</label>
+    <input type="search" id="busca" placeholder="Buscar produto" autocomplete="off" enterkeyhint="search">
+    <button type="button" class="limpar" id="limpar" aria-label="Limpar busca" hidden><svg class="icone"><use href="#i-mais"/></svg></button>
+  </div>
   <div class="tags" id="tags" role="group" aria-label="Filtrar por categoria" hidden></div>
   <div class="links" id="links" aria-live="polite">
     <p class="carregando">Carregando a seleção...</p>
@@ -263,7 +284,14 @@ window.BELLA_PRODUTOS = [
   { id:"P06", nome:"Base mate de alta cobertura 05 Adriana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P06", selo:"Frete grátis", status:"disponivel" },
   { id:"P07", nome:"Base mate de alta cobertura 04 Antônia", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P07", selo:"Frete grátis", status:"disponivel" },
   { id:"P08", nome:"Base mate de alta cobertura 06 Juliana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P08", selo:"Frete grátis", status:"disponivel" },
-  { id:"P09", nome:"Caneta aparadora recarregável", categoria:"autocuidado", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" }
+  { id:"P09", nome:"Caneta aparadora recarregável", categoria:"autocuidado", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" },
+  { id:"P10", nome:"Modelador de ondas bivolt lilás", categoria:"cabelo", descricao:"Ondas de sereia em poucos minutos", preco:119.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P10", selo:"Frete grátis", status:"disponivel" },
+  { id:"P11", nome:"Modelador de ondas bivolt rosa", categoria:"cabelo", descricao:"Ondas de sereia em poucos minutos", preco:119.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P11", selo:"Frete grátis", status:"disponivel" },
+  { id:"P12", nome:"Escova secadora 5 em 1 pink 110V", categoria:"cabelo", descricao:"Seca, alisa, cacheia e dá volume", preco:169.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P12", selo:"Frete grátis", status:"disponivel" },
+  { id:"P13", nome:"Escova secadora 5 em 1 branca 110V", categoria:"cabelo", descricao:"Seca, alisa, cacheia e dá volume", preco:169.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P13", selo:"Frete grátis", status:"disponivel" },
+  { id:"P14", nome:"Fone sem fio Bluetooth Tune 510 Premium azul", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P14", selo:"Frete grátis", status:"disponivel" },
+  { id:"P15", nome:"Fone sem fio Bluetooth Tune 510 Premium preto", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P15", selo:"Frete grátis", status:"disponivel" },
+  { id:"P16", nome:"Fone sem fio Bluetooth Tune 510 Premium vermelho", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P16", selo:"Frete grátis", status:"disponivel" }
 ];
 </script>
 
@@ -380,9 +408,30 @@ window.BELLA_PRODUTOS = [
     evento("filtro categoria #vitrine", { categoria: tagAtual });
     mostrar();
   });
+  /* Pesquisa: procura no nome, na descricao e na tag, sem ligar para acento ou maiuscula */
+  var campo = doc.getElementById("busca"), limpar = doc.getElementById("limpar"), termo = "", espera = null;
+  function semAcento(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim(); }
+  campo.addEventListener("input", function () {
+    termo = semAcento(campo.value);
+    limpar.hidden = !campo.value;
+    mostrar();
+    clearTimeout(espera);
+    if (termo.length > 1) espera = setTimeout(function () { evento("pesquisa #vitrine", { termo: campo.value.trim() }); }, 1200);
+  });
+  campo.addEventListener("keydown", function (e) { if (e.key === "Enter") campo.blur(); });
+  limpar.addEventListener("click", function () { campo.value = ""; termo = ""; limpar.hidden = true; mostrar(); campo.focus(); });
   function mostrar() {
     var lista = tagAtual === "todos" ? produtos : produtos.filter(function (p) { return p.categoria === tagAtual; });
-    alvo.innerHTML = lista.length ? lista.map(item).join("") : '<p class="carregando">Novidades chegando. Acompanhe pelo Instagram.</p>';
+    if (termo) {
+      var partes = termo.split(/\s+/);
+      lista = lista.filter(function (p) {
+        var texto = semAcento(p.nome + " " + p.descricao + " " + (TAGS[p.categoria] || p.categoria));
+        return partes.every(function (x) { return texto.indexOf(x) > -1; });
+      });
+    }
+    alvo.innerHTML = lista.length ? lista.map(item).join("")
+      : termo ? '<p class="carregando">Nenhum produto encontrado' + (tagAtual !== "todos" ? " nesta tag" : "") + '. Tente outra palavra.</p>'
+      : '<p class="carregando">Novidades chegando. Acompanhe pelo Instagram.</p>';
   }
   alvo.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-id]");
