@@ -140,7 +140,8 @@ img { display:block; max-width:100%; }
 .miniatura .icone { width:30px; height:30px; stroke-width:1.2; }
 .info { flex:1; min-width:0; }
 .info strong { display:block; font-weight:500; font-size:1rem; line-height:1.3; }
-.info small { display:block; color:var(--suave); font-size:.8rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.info small { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; color:var(--suave); font-size:.8rem; line-height:1.35; overflow:hidden; }
+.links > *, .link { min-width:0; }
 .valor { margin-top:3px; font-size:.95rem; }
 .valor s { color:var(--suave); font-size:.8rem; margin-right:6px; }
 .selo { display:inline-block; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:2px 7px; border-radius:3px; background:var(--marca-clara); color:var(--marca-forte); margin-bottom:4px; }
@@ -275,23 +276,15 @@ img { display:block; max-width:100%; }
    ========================================================== */
 window.BELLA_PRODUTOS = [
   /* Link de cada produto: https://bcbellachoice.github.io/ + codigo (P01, P02...).
-     imagem: deixe "" para usar o desenho, ou coloque o endereco da foto. */
-  { id:"P01", nome:"Escova alisadora elétrica bivolt vermelha", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P01", selo:"Frete grátis", status:"disponivel" },
-  { id:"P02", nome:"Escova alisadora elétrica bivolt preta", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P02", selo:"Frete grátis", status:"disponivel" },
-  { id:"P03", nome:"Escova alisadora elétrica bivolt verde", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P03", selo:"Frete grátis", status:"disponivel" },
-  { id:"P04", nome:"Base mate de alta cobertura 03 Francisca", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P04", selo:"Frete grátis", status:"disponivel" },
-  { id:"P05", nome:"Base mate de alta cobertura 02 Ana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P05", selo:"Frete grátis", status:"disponivel" },
-  { id:"P06", nome:"Base mate de alta cobertura 05 Adriana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P06", selo:"Frete grátis", status:"disponivel" },
-  { id:"P07", nome:"Base mate de alta cobertura 04 Antônia", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P07", selo:"Frete grátis", status:"disponivel" },
-  { id:"P08", nome:"Base mate de alta cobertura 06 Juliana", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P08", selo:"Frete grátis", status:"disponivel" },
+     imagem: deixe "" para usar o desenho, ou coloque o endereco da foto.
+     Produto com cores: uma linha so, e as cores ficam na propria pagina do produto.
+     Os codigos antigos (P02, P03, P05 a P08, P11, P13, P15, P16) agora redirecionam para a pagina com cores. */
+  { id:"P01", nome:"Escova alisadora elétrica bivolt", categoria:"cabelo", descricao:"Penteia e alisa ao mesmo tempo. Preta, vermelha ou verde", preco:79.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P01", selo:"Frete grátis", status:"disponivel" },
+  { id:"P04", nome:"Base mate de alta cobertura", categoria:"maquiagem", descricao:"Cobre bem, fica leve, resistente à água. 5 cores, de 02 Ana a 06 Juliana", preco:59.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P04", selo:"Frete grátis", status:"disponivel" },
   { id:"P09", nome:"Caneta aparadora recarregável", categoria:"autocuidado", descricao:"Sobrancelha alinhada em minutos, sem pinça", preco:49.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P09", selo:"Frete grátis", status:"disponivel" },
-  { id:"P10", nome:"Modelador de ondas bivolt lilás", categoria:"cabelo", descricao:"Ondas de sereia em poucos minutos", preco:119.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P10", selo:"Frete grátis", status:"disponivel" },
-  { id:"P11", nome:"Modelador de ondas bivolt rosa", categoria:"cabelo", descricao:"Ondas de sereia em poucos minutos", preco:119.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P11", selo:"Frete grátis", status:"disponivel" },
-  { id:"P12", nome:"Escova secadora 5 em 1 pink 110V", categoria:"cabelo", descricao:"Seca, alisa, cacheia e dá volume", preco:169.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P12", selo:"Frete grátis", status:"disponivel" },
-  { id:"P13", nome:"Escova secadora 5 em 1 branca 110V", categoria:"cabelo", descricao:"Seca, alisa, cacheia e dá volume", preco:169.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P13", selo:"Frete grátis", status:"disponivel" },
-  { id:"P14", nome:"Fone sem fio Bluetooth Tune 510 Premium azul", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P14", selo:"Frete grátis", status:"disponivel" },
-  { id:"P15", nome:"Fone sem fio Bluetooth Tune 510 Premium preto", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P15", selo:"Frete grátis", status:"disponivel" },
-  { id:"P16", nome:"Fone sem fio Bluetooth Tune 510 Premium vermelho", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P16", selo:"Frete grátis", status:"disponivel" }
+  { id:"P10", nome:"Modelador de ondas bivolt", categoria:"cabelo", descricao:"Ondas de sereia em poucos minutos. Lilás ou rosa", preco:119.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P10", selo:"Frete grátis", status:"disponivel" },
+  { id:"P12", nome:"Escova secadora 5 em 1 110V", categoria:"cabelo", descricao:"Seca, alisa, cacheia e dá volume. Branca e dourada ou pink e prata", preco:169.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P12", selo:"Frete grátis", status:"disponivel" },
+  { id:"P14", nome:"Fone sem fio Bluetooth Tune 510 Premium", categoria:"acessorios", descricao:"Microfone e conexão em dois aparelhos. Azul, preto ou vermelho", preco:89.90, precoDe:0, imagem:"", link:"https://bcbellachoice.github.io/P14", selo:"Frete grátis", status:"disponivel" }
 ];
 </script>
 
